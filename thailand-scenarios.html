@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thailand Property Investment Scenarios</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0a; font-family: 'DM Sans', 'Helvetica Neue', sans-serif; }
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    height: 4px; background: rgba(255,255,255,0.12); border-radius: 4px; outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #4ade80; cursor: pointer; border: 2px solid #0a0a0a;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #4ade80; cursor: pointer; border: 2px solid #0a0a0a;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+
+const SCENARIOS = [
+  {
+    id: "phuket-villa",
+    region: "Phuket",
+    type: "Pool Villa (2-bed)",
+    emoji: "\u{1F3DD}\uFE0F",
+    purchasePrice: 8500000,
+    closingCostPct: 0.05,
+    annualAppreciation: 0.035,
+    furnishing: 400000,
+    rentalStrategy: "short",
+    grossNightlyRate: 4200,
+    occupancyHigh: 0.85,
+    occupancyLow: 0.45,
+    highSeasonMonths: 6,
+    mgmtFeePct: 0.25,
+    platformFeePct: 0.03,
+    cleaningPerTurnover: 1200,
+    avgStayNights: 4,
+    monthlyCAM: 3500,
+    monthlyUtilities: 4500,
+    monthlyPoolGarden: 4000,
+    annualInsurance: 12000,
+    annualRepairs: 25000,
+    annualPropertyTax: 5000,
+    longTermMonthlyRent: null,
+    notes: "Strong tourism demand, highest yields but regulatory complexity. Best suited for villa with hotel exemption registration. Bang Tao, Rawai, Kamala top areas.",
+  },
+  {
+    id: "phuket-condo",
+    region: "Phuket",
+    type: "Condo (1-bed, resort-style)",
+    emoji: "\u{1F30A}",
+    purchasePrice: 5000000,
+    closingCostPct: 0.045,
+    annualAppreciation: 0.03,
+    furnishing: 200000,
+    rentalStrategy: "short",
+    grossNightlyRate: 2800,
+    occupancyHigh: 0.82,
+    occupancyLow: 0.42,
+    highSeasonMonths: 6,
+    mgmtFeePct: 0.25,
+    platformFeePct: 0.03,
+    cleaningPerTurnover: 700,
+    avgStayNights: 5,
+    monthlyCAM: 2500,
+    monthlyUtilities: 2500,
+    monthlyPoolGarden: 0,
+    annualInsurance: 6000,
+    annualRepairs: 12000,
+    annualPropertyTax: 3000,
+    longTermMonthlyRent: 25000,
+    notes: "Foreign-quota freehold ownership possible. Check building allows STR. Many resort-style condos are designed for rental. Patong, Kata, Surin popular.",
+  },
+  {
+    id: "bangkok-condo",
+    region: "Bangkok",
+    type: "Condo (1-bed, near BTS)",
+    emoji: "\u{1F3D9}\uFE0F",
+    purchasePrice: 4500000,
+    closingCostPct: 0.045,
+    annualAppreciation: 0.02,
+    furnishing: 180000,
+    rentalStrategy: "long",
+    grossNightlyRate: 1800,
+    occupancyHigh: 0.75,
+    occupancyLow: 0.58,
+    highSeasonMonths: 5,
+    mgmtFeePct: 0.15,
+    platformFeePct: 0.03,
+    cleaningPerTurnover: 600,
+    avgStayNights: 5,
+    monthlyCAM: 2200,
+    monthlyUtilities: 2000,
+    monthlyPoolGarden: 0,
+    annualInsurance: 5000,
+    annualRepairs: 8000,
+    annualPropertyTax: 2500,
+    longTermMonthlyRent: 22000,
+    notes: "Steadiest demand from expats and professionals. Lower yield but most liquid market. Sukhumvit, Sathorn, On Nut best value corridors. 30+ day minimum for legal STR.",
+  },
+  {
+    id: "pattaya-condo",
+    region: "Pattaya",
+    type: "Condo (1-bed, sea view)",
+    emoji: "\u{26F1}\uFE0F",
+    purchasePrice: 3500000,
+    closingCostPct: 0.045,
+    annualAppreciation: 0.025,
+    furnishing: 150000,
+    rentalStrategy: "short",
+    grossNightlyRate: 2000,
+    occupancyHigh: 0.78,
+    occupancyLow: 0.40,
+    highSeasonMonths: 5,
+    mgmtFeePct: 0.22,
+    platformFeePct: 0.03,
+    cleaningPerTurnover: 600,
+    avgStayNights: 4,
+    monthlyCAM: 1800,
+    monthlyUtilities: 2000,
+    monthlyPoolGarden: 0,
+    annualInsurance: 5000,
+    annualRepairs: 10000,
+    annualPropertyTax: 2000,
+    longTermMonthlyRent: 15000,
+    notes: "Most affordable coastal entry point. EEC infrastructure boosting long-term growth. Jomtien, Wongamat, Pratumnak popular. Strong Russian/Chinese buyer market.",
+  },
+  {
+    id: "chiangmai-house",
+    region: "Chiang Mai",
+    type: "House in gated community",
+    emoji: "\u{26F0}\uFE0F",
+    purchasePrice: 5500000,
+    closingCostPct: 0.05,
+    annualAppreciation: 0.03,
+    furnishing: 250000,
+    rentalStrategy: "long",
+    grossNightlyRate: 1500,
+    occupancyHigh: 0.72,
+    occupancyLow: 0.55,
+    highSeasonMonths: 5,
+    mgmtFeePct: 0.15,
+    platformFeePct: 0.03,
+    cleaningPerTurnover: 800,
+    avgStayNights: 14,
+    monthlyCAM: 1500,
+    monthlyUtilities: 3000,
+    monthlyPoolGarden: 2000,
+    annualInsurance: 8000,
+    annualRepairs: 15000,
+    annualPropertyTax: 3000,
+    longTermMonthlyRent: 25000,
+    notes: "Requires Thai spouse ownership (land). Digital nomad haven. Nimman, Hang Dong, Mae Rim top areas. Longest average stays = lower turnover costs. Cool season Nov-Feb peak.",
+  },
+];
+
+const THB_USD = 32.3;
+
+function fmt(n, decimals) {
+  if (decimals === undefined) decimals = 0;
+  return n.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
+
+function fmtUSD(thb) {
+  return "$" + fmt(thb / THB_USD, 0);
+}
+
+function calcScenario(s, holdYears) {
+  const totalInvestment = s.purchasePrice * (1 + s.closingCostPct) + s.furnishing;
+  const highSeasonNights = s.highSeasonMonths * 30;
+  const lowSeasonNights = (12 - s.highSeasonMonths) * 30;
+  const bookedHighNights = highSeasonNights * s.occupancyHigh;
+  const bookedLowNights = lowSeasonNights * s.occupancyLow;
+  const totalBookedNights = bookedHighNights + bookedLowNights;
+  const grossSTR = totalBookedNights * s.grossNightlyRate;
+  const turnovers = totalBookedNights / s.avgStayNights;
+  const cleaningTotal = turnovers * s.cleaningPerTurnover;
+  const mgmtFee = grossSTR * s.mgmtFeePct;
+  const platformFee = grossSTR * s.platformFeePct;
+  const annualFixed = s.monthlyCAM * 12 + s.monthlyUtilities * 12 + s.monthlyPoolGarden * 12 + s.annualInsurance + s.annualRepairs + s.annualPropertyTax;
+  const totalExpensesSTR = cleaningTotal + mgmtFee + platformFee + annualFixed;
+  const netSTR = grossSTR - totalExpensesSTR;
+  const netYieldSTR = netSTR / totalInvestment;
+  const expenseRatioSTR = totalExpensesSTR / grossSTR;
+
+  const grossLTR = s.longTermMonthlyRent ? s.longTermMonthlyRent * 11 : 0;
+  const mgmtFeeLTR = grossLTR * s.mgmtFeePct;
+  const totalExpensesLTR = mgmtFeeLTR + annualFixed;
+  const netLTR = grossLTR - totalExpensesLTR;
+  const netYieldLTR = s.longTermMonthlyRent ? netLTR / totalInvestment : 0;
+
+  const isSTR = s.rentalStrategy === "short";
+  const netIncome = isSTR ? netSTR : netLTR;
+  const netYield = isSTR ? netYieldSTR : netYieldLTR;
+  const grossIncome = isSTR ? grossSTR : grossLTR;
+
+  const futureValue = s.purchasePrice * Math.pow(1 + s.annualAppreciation, holdYears);
+  const totalRentalIncome = netIncome * holdYears;
+  const capitalGain = futureValue - s.purchasePrice;
+  const totalReturn = totalRentalIncome + capitalGain;
+  const totalReturnPct = totalReturn / totalInvestment;
+  const annualizedReturn = Math.pow(1 + totalReturnPct, 1 / holdYears) - 1;
+
+  return {
+    totalInvestment, totalBookedNights, grossSTR, turnovers, cleaningTotal,
+    mgmtFee, platformFee, annualFixed, totalExpensesSTR, netSTR, netYieldSTR,
+    expenseRatioSTR, grossLTR, mgmtFeeLTR, totalExpensesLTR, netLTR, netYieldLTR,
+    isSTR, netIncome, netYield, grossIncome, futureValue, totalRentalIncome,
+    capitalGain, totalReturn, totalReturnPct, annualizedReturn,
+  };
+}
+
+const ACCENT_COLORS = {
+  "phuket-villa": { bg: "#1a3a2a", accent: "#4ade80", glow: "rgba(74,222,128,0.15)" },
+  "phuket-condo": { bg: "#1a2a3a", accent: "#60a5fa", glow: "rgba(96,165,250,0.15)" },
+  "bangkok-condo": { bg: "#2a1a3a", accent: "#c084fc", glow: "rgba(192,132,252,0.15)" },
+  "pattaya-condo": { bg: "#3a2a1a", accent: "#fb923c", glow: "rgba(251,146,60,0.15)" },
+  "chiangmai-house": { bg: "#1a2a2a", accent: "#2dd4bf", glow: "rgba(45,212,191,0.15)" },
+};
+
+function Row({ label, value, color, bold }) {
+  return (
+    <div style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+      <span style={{ fontSize: 12.5, color: "#999" }}>{label}</span>
+      <span style={{ fontSize: 12.5, color: color || "#ddd", fontWeight: bold ? 700 : 400 }}>{value}</span>
+    </div>
+  );
+}
+
+function ScenarioCard({ s, holdYears, expanded, onToggle }) {
+  const c = calcScenario(s, holdYears);
+  const colors = ACCENT_COLORS[s.id];
+
+  return (
+    <div style={{
+      background: "linear-gradient(135deg, " + colors.bg + ", #111)",
+      border: "1px solid " + colors.accent + "33",
+      borderRadius: 16, overflow: "hidden",
+    }}>
+      <div onClick={onToggle} style={{
+        padding: "20px 24px", cursor: "pointer",
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        borderBottom: expanded ? "1px solid " + colors.accent + "22" : "none",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <span style={{ fontSize: 28 }}>{s.emoji}</span>
+          <div>
+            <div style={{ fontSize: 17, fontWeight: 700, color: "#f0f0f0", letterSpacing: "-0.02em" }}>{s.region}</div>
+            <div style={{ fontSize: 13, color: "#999", marginTop: 2 }}>{s.type}</div>
+          </div>
+        </div>
+        <div style={{ textAlign: "right", display: "flex", alignItems: "center", gap: 20 }}>
+          <div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: colors.accent, letterSpacing: "-0.03em" }}>
+              {(c.annualizedReturn * 100).toFixed(1)}%
+            </div>
+            <div style={{ fontSize: 11, color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>annualized</div>
+          </div>
+          <span style={{ color: "#666", fontSize: 18, transition: "transform 0.3s", transform: expanded ? "rotate(180deg)" : "rotate(0)" }}>&#x25BE;</span>
+        </div>
+      </div>
+
+      {expanded && (
+        <div style={{ padding: "0 24px 24px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginTop: 16, marginBottom: 20 }}>
+            {[
+              { label: "Total Investment", value: "\u0E3F" + fmt(c.totalInvestment / 1e6, 1) + "M", sub: fmtUSD(c.totalInvestment) },
+              { label: "Net Annual Income", value: "\u0E3F" + fmt(c.netIncome), sub: fmtUSD(c.netIncome) },
+              { label: "Net Yield", value: (c.netYield * 100).toFixed(1) + "%", sub: c.isSTR ? "Short-term" : "Long-term" },
+              { label: holdYears + "-Yr Total Return", value: "\u0E3F" + fmt(c.totalReturn), sub: fmtUSD(c.totalReturn) },
+            ].map(function(m, i) {
+              return (
+                <div key={i} style={{ background: colors.glow, borderRadius: 10, padding: "12px 14px", textAlign: "center" }}>
+                  <div style={{ fontSize: 11, color: "#999", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: 6 }}>{m.label}</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: "#f0f0f0" }}>{m.value}</div>
+                  <div style={{ fontSize: 12, color: "#888", marginTop: 2 }}>{m.sub}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: colors.accent, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              Income Breakdown (Annual)
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+              {c.isSTR ? (
+                <>
+                  <Row label="Booked nights/year" value={fmt(c.totalBookedNights, 0) + " nights"} />
+                  <Row label="Avg occupancy" value={((c.totalBookedNights / 365) * 100).toFixed(0) + "%"} />
+                  <Row label="Gross STR revenue" value={"\u0E3F" + fmt(c.grossSTR)} color="#4ade80" />
+                  <Row label="Turnovers/year" value={"~" + fmt(c.turnovers, 0)} />
+                  <Row label={"Management (" + (s.mgmtFeePct * 100) + "%)"} value={"-\u0E3F" + fmt(c.mgmtFee)} color="#f87171" />
+                  <Row label="Platform fees (3%)" value={"-\u0E3F" + fmt(c.platformFee)} color="#f87171" />
+                  <Row label="Cleaning" value={"-\u0E3F" + fmt(c.cleaningTotal)} color="#f87171" />
+                  <Row label="Fixed costs" value={"-\u0E3F" + fmt(c.annualFixed)} color="#f87171" />
+                  <Row label="Expense ratio" value={(c.expenseRatioSTR * 100).toFixed(0) + "% of gross"} />
+                  <Row label="NET INCOME" value={"\u0E3F" + fmt(c.netSTR)} color={colors.accent} bold={true} />
+                </>
+              ) : (
+                <>
+                  <Row label="Monthly rent" value={"\u0E3F" + fmt(s.longTermMonthlyRent)} />
+                  <Row label="Gross (11 months)" value={"\u0E3F" + fmt(c.grossLTR)} color="#4ade80" />
+                  <Row label={"Management (" + (s.mgmtFeePct * 100) + "%)"} value={"-\u0E3F" + fmt(c.mgmtFeeLTR)} color="#f87171" />
+                  <Row label="Fixed costs" value={"-\u0E3F" + fmt(c.annualFixed)} color="#f87171" />
+                  <Row label="NET INCOME" value={"\u0E3F" + fmt(c.netLTR)} color={colors.accent} bold={true} />
+                  <Row label="" value="" />
+                </>
+              )}
+            </div>
+          </div>
+
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: colors.accent, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              {holdYears}-Year Projection
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+              <Row label="Purchase price" value={"\u0E3F" + fmt(s.purchasePrice)} />
+              <Row label={"Est. value (" + (s.annualAppreciation * 100) + "%/yr)"} value={"\u0E3F" + fmt(c.futureValue, 0)} />
+              <Row label="Capital gain" value={"\u0E3F" + fmt(c.capitalGain, 0)} color="#4ade80" />
+              <Row label={"Rental income (" + holdYears + " yrs)"} value={"\u0E3F" + fmt(c.totalRentalIncome, 0)} color="#4ade80" />
+              <Row label="TOTAL RETURN" value={"\u0E3F" + fmt(c.totalReturn, 0)} color={colors.accent} bold={true} />
+              <Row label="Return on investment" value={(c.totalReturnPct * 100).toFixed(0) + "%"} color={colors.accent} bold={true} />
+            </div>
+          </div>
+
+          {s.longTermMonthlyRent && c.isSTR && (
+            <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "12px 16px", marginBottom: 14 }}>
+              <div style={{ fontSize: 12, color: "#aaa", marginBottom: 4 }}>
+                <span style={{ fontWeight: 600 }}>If long-term rental instead:</span>{" "}
+                Net yield {(c.netYieldLTR * 100).toFixed(1)}% &mdash; STR premium is +{((c.netYieldSTR - c.netYieldLTR) * 100).toFixed(1)} percentage points, but requires active management and legal compliance.
+              </div>
+            </div>
+          )}
+
+          <div style={{
+            background: "rgba(255,255,255,0.03)", borderRadius: 10, padding: "12px 16px",
+            fontSize: 12.5, color: "#aaa", lineHeight: 1.6, borderLeft: "3px solid " + colors.accent + "44",
+          }}>
+            {s.notes}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RankingBar({ scenarios, holdYears }) {
+  const ranked = scenarios.map(function(s) {
+    const c = calcScenario(s, holdYears);
+    return { id: s.id, emoji: s.emoji, region: s.region, annualized: c.annualizedReturn, totalInvestment: c.totalInvestment };
+  }).sort(function(a, b) { return b.annualized - a.annualized; });
+
+  const maxReturn = ranked[0].annualized;
+  const barColors = {
+    "phuket-villa": "#4ade80", "phuket-condo": "#60a5fa",
+    "bangkok-condo": "#c084fc", "pattaya-condo": "#fb923c", "chiangmai-house": "#2dd4bf",
+  };
+
+  return (
+    <div style={{ marginBottom: 8 }}>
+      {ranked.map(function(r) {
+        return (
+          <div key={r.id} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+            <div style={{ width: 110, fontSize: 12, color: "#aaa", textAlign: "right", flexShrink: 0 }}>
+              {r.emoji} {r.region}
+            </div>
+            <div style={{ flex: 1, height: 26, background: "rgba(255,255,255,0.05)", borderRadius: 6, overflow: "hidden" }}>
+              <div style={{
+                width: (r.annualized / maxReturn * 100) + "%",
+                height: "100%",
+                background: "linear-gradient(90deg, " + barColors[r.id] + "88, " + barColors[r.id] + ")",
+                borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "flex-end",
+                paddingRight: 8, transition: "width 0.6s ease", minWidth: 60,
+              }}>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#fff" }}>{(r.annualized * 100).toFixed(1)}%</span>
+              </div>
+            </div>
+            <div style={{ width: 90, fontSize: 11, color: "#888", flexShrink: 0 }}>{fmtUSD(r.totalInvestment)} in</div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function App() {
+  const [holdYears, setHoldYears] = useState(5);
+  const [expanded, setExpanded] = useState({ "phuket-villa": true });
+
+  function toggle(id) {
+    setExpanded(function(prev) {
+      var next = Object.assign({}, prev);
+      next[id] = !prev[id];
+      return next;
+    });
+  }
+
+  return (
+    <div style={{
+      fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
+      background: "#0a0a0a", color: "#e0e0e0",
+      minHeight: "100vh", padding: "32px 20px", maxWidth: 700, margin: "0 auto",
+    }}>
+      <div style={{ marginBottom: 32 }}>
+        <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#666", marginBottom: 6 }}>
+          Investment Analysis
+        </div>
+        <h1 style={{ fontSize: 26, fontWeight: 800, color: "#f5f5f5", letterSpacing: "-0.03em", margin: 0, lineHeight: 1.2 }}>
+          Thailand Property Scenarios
+        </h1>
+        <p style={{ fontSize: 13, color: "#888", marginTop: 8, lineHeight: 1.5 }}>
+          Five modeled scenarios comparing regions, property types, and rental strategies.
+          All figures in THB with USD equivalents at &#x0E3F;{THB_USD}/$.
+        </p>
+      </div>
+
+      <div style={{
+        background: "rgba(255,255,255,0.04)", borderRadius: 12, padding: "16px 20px",
+        marginBottom: 24, display: "flex", alignItems: "center", gap: 16,
+      }}>
+        <div style={{ fontSize: 12, color: "#aaa", whiteSpace: "nowrap" }}>Hold Period</div>
+        <input type="range" min={3} max={15} value={holdYears}
+          onChange={function(e) { setHoldYears(Number(e.target.value)); }}
+          style={{ flex: 1 }}
+        />
+        <div style={{ fontSize: 20, fontWeight: 800, color: "#4ade80", minWidth: 60, textAlign: "center" }}>
+          {holdYears} yr{holdYears > 1 ? "s" : ""}
+        </div>
+      </div>
+
+      <div style={{ marginBottom: 28 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: "#888", marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+          Annualized Total Return Ranking
+        </div>
+        <RankingBar scenarios={SCENARIOS} holdYears={holdYears} />
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {SCENARIOS.map(function(s) {
+          return (
+            <ScenarioCard key={s.id} s={s} holdYears={holdYears}
+              expanded={!!expanded[s.id]} onToggle={function() { toggle(s.id); }}
+            />
+          );
+        })}
+      </div>
+
+      <div style={{
+        marginTop: 28, padding: "16px 20px", background: "rgba(255,255,255,0.02)",
+        borderRadius: 10, fontSize: 11, color: "#666", lineHeight: 1.6,
+      }}>
+        <strong style={{ color: "#888" }}>Assumptions &amp; Caveats:</strong> Estimates based on 2025-2026 market data. STR scenarios assume
+        proper licensing/compliance (hotel exemption for villas, 30+ day minimum for condos where required).
+        Appreciation rates are conservative estimates, not guarantees. Does not account for currency fluctuation,
+        income tax, or capital gains on resale. Management fees assume professional third-party management.
+        Self-management would improve yields 3-5 percentage points but requires local presence. Property tax in Thailand is minimal
+        (0.02-0.10% of assessed value). All scenarios assume cash purchase &mdash; mortgage financing would significantly alter returns.
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.render(React.createElement(App), document.getElementById("root"));
+</script>
+</body>
+</html>
