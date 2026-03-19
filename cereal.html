@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're Paying $4.44 for $0.18 Worth of Food | The Real Cost of Boxed Cereal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --paper: #f5f0e8;
+      --cream: #ede7d5;
+      --red: #c0392b;
+      --gold: #b8860b;
+      --muted: #7a6e5f;
+      --border: #c8bda8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 3px double var(--border);
+      padding: 2rem 0 1.5rem;
+      text-align: center;
+      background: var(--cream);
+    }
+    .kicker {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      max-width: 820px;
+      margin: 0 auto 1.2rem;
+      padding: 0 1.5rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--red);
+    }
+    .deck {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+      padding: 0 1.5rem;
+      line-height: 1.6;
+    }
+    .byline {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── BODY TEXT ── */
+    .body-text {
+      padding: 3rem 0;
+    }
+    .body-text p {
+      font-size: 1.08rem;
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+    }
+    .body-text p:first-child::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      float: left;
+      line-height: 0.8;
+      margin: 0.1em 0.08em 0 0;
+      color: var(--red);
+    }
+
+    /* ── SECTION HEADS ── */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin: 3rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1.5px solid var(--border);
+    }
+    h3 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin: 2.5rem 0 0.6rem;
+    }
+
+    /* ── CALLOUT / PULL QUOTE ── */
+    .pull-quote {
+      border-left: 4px solid var(--red);
+      margin: 2.5rem 0;
+      padding: 1rem 1.5rem;
+      background: var(--cream);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.45;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    /* ── STAT BOX ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .stat-box {
+      background: var(--cream);
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+    }
+    .stat-box .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--red);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-box .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── INGREDIENT TABLE ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2.5rem;
+      font-size: 0.92rem;
+    }
+    .data-table thead tr {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .data-table thead th {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 500;
+    }
+    .data-table tbody tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .data-table tbody tr:nth-child(even) {
+      background: var(--cream);
+    }
+    .data-table tbody td {
+      padding: 0.65rem 1rem;
+    }
+    .data-table tfoot tr {
+      background: var(--cream);
+      border-top: 2px solid var(--ink);
+    }
+    .data-table tfoot td {
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+    }
+
+    /* ── COST BREAKDOWN TABLE ── */
+    .money-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2.5rem;
+      font-size: 0.92rem;
+    }
+    .money-table tbody tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .money-table tbody tr:nth-child(even) { background: var(--cream); }
+    .money-table td {
+      padding: 0.65rem 1rem;
+    }
+    .money-table .bar-cell {
+      width: 45%;
+    }
+    .bar-wrap {
+      height: 14px;
+      background: #e0d9cc;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: var(--red);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .bar-fill.ingredients { background: #4a9e6b; width: 5%; }
+    .bar-fill.packaging { background: #6baed6; width: 4%; }
+    .bar-fill.manufacturing { background: #9970ab; width: 15%; }
+    .bar-fill.marketing { background: var(--red); width: 27%; }
+    .bar-fill.distribution { background: #fd8d3c; width: 15%; }
+    .bar-fill.retailer { background: #b8860b; width: 20%; }
+    .bar-fill.profit { background: #8c6d3f; width: 14%; }
+    .money-table tfoot tr {
+      border-top: 2px solid var(--ink);
+      background: var(--cream);
+    }
+    .money-table tfoot td {
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+    }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .image-placeholder {
+      border: 2px dashed var(--border);
+      background: var(--cream);
+      margin: 2.5rem 0;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .image-placeholder .ph-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .image-placeholder p {
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* ── RECIPE BOX ── */
+    .recipe-box {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 2rem 2rem 2rem;
+      margin: 2.5rem 0;
+    }
+    .recipe-box h3 {
+      color: #e8c97a;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      margin: 0 0 0.5rem;
+    }
+    .recipe-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--paper);
+      margin-bottom: 1.4rem;
+      font-weight: 400;
+    }
+    .recipe-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 560px) { .recipe-columns { grid-template-columns: 1fr; } }
+    .recipe-box ul, .recipe-box ol {
+      padding-left: 1.2rem;
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+    .recipe-box ul { list-style: disc; }
+    .recipe-box ol { list-style: decimal; }
+    .recipe-box .col-head {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #e8c97a;
+      margin-bottom: 0.6rem;
+    }
+    .recipe-cost {
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #3a3020;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: #c8bda8;
+    }
+    .recipe-cost span { color: #e8c97a; font-size: 1.1rem; }
+
+    /* ── SAVINGS LIST ── */
+    .savings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+    .savings-item {
+      border: 1px solid var(--border);
+      padding: 1rem 1.1rem;
+      background: var(--cream);
+    }
+    .savings-item .si-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .savings-item .si-detail {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 3px double var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    strong { font-weight: 600; }
+    em { font-style: italic; }
+    a { color: var(--red); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Consumer Advocacy &nbsp;·&nbsp; Food &amp; Grocery</div>
+  <h1>You're Paying $4.44 for <em>$0.18 Worth</em> of Food</h1>
+  <p class="deck">Grocery prices have never been higher. But before you cut back on dinner, take a hard look at what's happening at breakfast — and what's really inside that box of Honey Nut Cheerios.</p>
+  <p class="byline">The Real Cost of Boxed Cereal &nbsp;·&nbsp; 2026</p>
+</header>
+
+<div class="container">
+<div class="body-text">
+
+<p>Groceries are brutal right now. Families across America are rearranging their budgets, cutting back, and stretching every dollar as far as it will go. But here's something nobody in the cereal aisle is talking about: <strong>some of the worst grocery value on the shelf is sitting right there at eye level, cheerfully packaged in yellow and red.</strong></p>
+
+<p>Honey Nut Cheerios is the best-selling cereal in America. General Mills sells over 139 million boxes a year. It is, by every measure, a cultural institution — a childhood staple, a pantry fixture, a product so familiar we stopped questioning it long ago. It's time to start questioning it.</p>
+
+<div class="stat-grid">
+  <div class="stat-box">
+    <span class="number">$4.44</span>
+    <span class="label">Price for a standard<br>10.8 oz box (Walmart)</span>
+  </div>
+  <div class="stat-box">
+    <span class="number">$0.18</span>
+    <span class="label">Estimated cost of<br>actual ingredients</span>
+  </div>
+  <div class="stat-box">
+    <span class="number">4%</span>
+    <span class="label">Portion of your dollar<br>that buys real food</span>
+  </div>
+  <div class="stat-box">
+    <span class="number">27%</span>
+    <span class="label">Portion that pays for<br>advertising</span>
+  </div>
+</div>
+
+<h2>The Name Is a Fiction</h2>
+
+<p>Let's start with what's actually in the box — because the name "Honey Nut Cheerios" implies two things that are either missing entirely or present in quantities so small they barely count.</p>
+
+<h3>The "Nut" Problem</h3>
+
+<p><strong>There are no nuts in Honey Nut Cheerios.</strong> Not a single one. No almonds, no hazelnuts, no walnuts — nothing. The "nut" flavor you taste is a synthetic laboratory compound, typically benzaldehyde or related chemical esters, manufactured to mimic roasted almond aroma. It appears on the label as "Natural Almond Flavor" — a term the FDA permits even for laboratory-produced compounds, as long as the original source material is natural somewhere in the production chain. General Mills uses this both for cost control and allergen management. But make no mistake: you are tasting chemistry, not nuts.</p>
+
+<h3>The "Honey" Problem</h3>
+
+<p>Honey is the <em>fourth</em> ingredient listed, behind whole grain oats, sugar, and corn starch. Federal labeling law requires ingredients to be listed in descending order by weight — meaning there is more refined sugar in this cereal than honey. By weight, a standard 10.8 oz box contains approximately <strong>0.16 oz of honey</strong> — about one teaspoon. Even at that, the heat of industrial processing destroys most of the trace antioxidant properties real honey is sometimes credited with. What remains is functionally indistinguishable from any other form of added sugar.</p>
+
+<p>The name "Honey Nut Cheerios" is not a description of what's in the box. It is a marketing decision.</p>
+
+<div class="pull-quote">
+  <p>"There is more money spent convincing you to buy this cereal than there is food inside it — by a factor of six."</p>
+</div>
+
+<h2>What's Actually Inside</h2>
+
+<p>Here is the complete ingredient list, with estimated percentages by weight based on nutritional data and ingredient order. General Mills does not publish exact percentages, but FDA labeling rules and the nutritional panel allow reasonable reconstruction:</p>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Ingredient</th>
+      <th>Est. % by Weight</th>
+      <th>Est. Amount (10.8 oz box)</th>
+      <th>Bulk Wholesale Cost</th>
+      <th>Cost in Box</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Whole Grain Oats</td>
+      <td>~62%</td>
+      <td>6.7 oz</td>
+      <td>~$0.24/lb</td>
+      <td>~$0.10</td>
+    </tr>
+    <tr>
+      <td>Sugar</td>
+      <td>~11%</td>
+      <td>1.2 oz</td>
+      <td>~$0.50/lb</td>
+      <td>~$0.04</td>
+    </tr>
+    <tr>
+      <td>Corn Starch</td>
+      <td>~6%</td>
+      <td>0.65 oz</td>
+      <td>~$0.35/lb</td>
+      <td>~$0.01</td>
+    </tr>
+    <tr>
+      <td>Brown Sugar Syrup</td>
+      <td>~4%</td>
+      <td>0.43 oz</td>
+      <td>~$0.45/lb</td>
+      <td>~$0.01</td>
+    </tr>
+    <tr>
+      <td>Honey</td>
+      <td>~1.5%</td>
+      <td><strong>0.16 oz (≈1 tsp)</strong></td>
+      <td>~$2.00/lb</td>
+      <td>~$0.02</td>
+    </tr>
+    <tr>
+      <td>Canola/Sunflower Oil</td>
+      <td>~1.5%</td>
+      <td>0.16 oz</td>
+      <td>~$0.85/lb</td>
+      <td>&lt;$0.01</td>
+    </tr>
+    <tr>
+      <td>Salt</td>
+      <td>~1%</td>
+      <td>0.11 oz</td>
+      <td>~$0.10/lb</td>
+      <td>&lt;$0.01</td>
+    </tr>
+    <tr>
+      <td>"Natural Almond Flavor"</td>
+      <td>trace</td>
+      <td>trace</td>
+      <td>synthetic compound</td>
+      <td>&lt;$0.01</td>
+    </tr>
+    <tr>
+      <td>Vitamins &amp; Minerals (12)</td>
+      <td>trace</td>
+      <td>trace</td>
+      <td>fortification blend</td>
+      <td>~$0.01</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4"><strong>Total Ingredient Cost</strong></td>
+      <td><strong>~$0.18</strong></td>
+    </tr>
+  </tfoot>
+</table>
+
+<h2>Where Does the Rest of Your $4.44 Go?</h2>
+
+<p>If the ingredients cost $0.18, what accounts for the other $4.26? Here is the breakdown, based on industry research into major cereal brand economics:</p>
+
+<table class="money-table">
+  <tbody>
+    <tr>
+      <td><strong>Marketing &amp; Advertising</strong></td>
+      <td>27% — $1.20</td>
+      <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill marketing"></div></div></td>
+    </tr>
+    <tr>
+      <td><strong>Retailer Margin</strong></td>
+      <td>20% — $0.89</td>
+      <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill retailer"></div></div></td>
+    </tr>
+    <tr>
+      <td><strong>Manufacturing &amp; Labor</strong></td>
+      <td>15% — $0.67</td>
+      <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill manufacturing"></div></div></td>
+    </tr>
+    <tr>
+      <td><strong>Distribution &amp; Freight</strong></td>
+      <td>15% — $0.67</td>
+      <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill distribution"></div></div></td>
+    </tr>
+    <tr>
+      <td><strong>General Mills Profit &amp; Overhead</strong></td>
+      <td>14% — $0.62</td>
+      <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill profit"></div></div></td>
+    </tr>
+    <tr>
+      <td><strong>Packaging</strong></td>
+      <td>4% — $0.18</td>
+      <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill packaging"></div></div></td>
+    </tr>
+    <tr>
+      <td><strong>Actual Ingredients</strong></td>
+      <td>4% — $0.18</td>
+      <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill ingredients"></div></div></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><strong>$4.44</strong></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+
+<p>Notice that General Mills spends more on advertising alone than it does on the food inside the box — <strong>by a factor of nearly seven.</strong> The cardboard box costs as much as the cereal it contains. You are paying, in effect, for a very expensive vehicle to deliver a very inexpensive product.</p>
+
+<!-- IMAGE INSERT POINT -->
+<figure style="margin: 2.5rem 0; text-align: center;">
+  <img src="cereal-cost-breakdown.jpg" alt="Generic cereal box showing pie chart: Where Your dollar goes" style="max-width: 100%; height: auto; display: block; margin: 0 auto; box-shadow: 0 4px 24px rgba(0,0,0,0.15);" />
+  <figcaption style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7a6e5f; margin-top: 0.8rem;">Where your money actually goes — the numbers printed on a box that tells the truth</figcaption>
+</figure>
+
+<h2>What You Can Do About It</h2>
+
+<p>Here is the good news: oats are cheap, delicious, and extraordinarily versatile. You do not need a box with a cartoon bee on it. What you need is about 25 minutes on a Sunday afternoon.</p>
+
+<div class="recipe-box">
+  <h3>Weekend Granola</h3>
+  <h4>Make a week's worth of breakfast in one pan</h4>
+  <div class="recipe-columns">
+    <div>
+      <p class="col-head">Ingredients</p>
+      <ul>
+        <li>3 cups rolled oats (~$0.75)</li>
+        <li>½ cup real honey (~$1.00)</li>
+        <li>⅓ cup olive or coconut oil (~$0.40)</li>
+        <li>1 tsp vanilla extract (~$0.10)</li>
+        <li>1 tsp cinnamon (~$0.05)</li>
+        <li>½ tsp salt (~$0.01)</li>
+        <li>1 cup real nuts of your choice (~$1.50)</li>
+        <li>½ cup dried fruit of your choice (~$0.50)</li>
+      </ul>
+    </div>
+    <div>
+      <p class="col-head">Method</p>
+      <ol>
+        <li>Preheat oven to 325°F</li>
+        <li>Mix oats, oil, honey, vanilla, salt, and cinnamon until well coated</li>
+        <li>Spread evenly on a parchment-lined baking sheet</li>
+        <li>Bake 20–25 minutes, stirring once at the halfway point</li>
+        <li>Remove, add nuts and dried fruit, let cool completely</li>
+        <li>Store in a sealed jar — keeps for two weeks</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-cost">
+    Total ingredient cost: <span>~$4.31</span> &nbsp;·&nbsp; Yield: approx. 5–6 cups (enough for a full week) &nbsp;·&nbsp; Cost per serving: <span>~$0.55</span> — with <em>real</em> honey, <em>real</em> nuts, and zero synthetic almond flavor.
+  </div>
+</div>
+
+<p>The granola you make at home will be fresher, more filling, better tasting, and made from ingredients you actually chose. It will cost you roughly <strong>half of what a box of Honey Nut Cheerios costs</strong> — and provide twice the food. You can tailor it exactly to what you like: more nuts, less sweet, extra cinnamon, whatever dried fruit is on sale. The recipe above is a starting point, not a rule.</p>
+
+<h2>Cereal Is Just the Beginning</h2>
+
+<p>The economics of Honey Nut Cheerios are not unusual. They are the norm. Every heavily marketed, branded, processed food product on the shelf follows the same basic structure: minimal food cost, enormous brand cost. Once you see it, you cannot unsee it.</p>
+
+<p>Here are a few other categories where the math is equally stark:</p>
+
+<div class="savings-grid">
+  <div class="savings-item">
+    <div class="si-name">Salad Dressing</div>
+    <div class="si-detail">A bottle of Italian dressing is mostly water, oil, and vinegar. Make it yourself in 90 seconds for a fraction of the price — and it tastes dramatically better.</div>
+  </div>
+  <div class="savings-item">
+    <div class="si-name">Sliced Deli Meat</div>
+    <div class="si-detail">Pre-sliced lunch meat carries a massive convenience premium. A whole roasted chicken breast or pork loin, sliced at home, costs a third as much per ounce.</div>
+  </div>
+  <div class="savings-item">
+    <div class="si-name">Flavored Yogurt</div>
+    <div class="si-detail">Plain Greek yogurt plus a spoonful of real jam or honey costs half as much as the pre-flavored variety — and has a fraction of the added sugar.</div>
+  </div>
+  <div class="savings-item">
+    <div class="si-name">Pasta Sauce</div>
+    <div class="si-detail">A jar of marinara is largely canned tomatoes, olive oil, and garlic. Homemade takes 20 minutes and costs about $0.80 per serving versus $2.50 from a jar.</div>
+  </div>
+  <div class="savings-item">
+    <div class="si-name">Granola Bars</div>
+    <div class="si-detail">Name-brand bars run $1.50–$2.50 each. A batch of homemade bars from the same granola recipe above works out to roughly $0.25 per bar.</div>
+  </div>
+  <div class="savings-item">
+    <div class="si-name">Seasoning Blends</div>
+    <div class="si-detail">Pre-mixed spice blends charge a steep premium for the "convenience" of mixing salt, garlic powder, and paprika together. Which you could do in ten seconds.</div>
+  </div>
+</div>
+
+<p>The grocery store is not designed to help you eat well for less. It is designed to move product efficiently and maximize revenue per square foot. Every endcap display, every eye-level shelf placement, every "family size" label is engineered to extract maximum value from your cart. The best defense is to walk past the center aisles more often and spend more time in the produce section, the bulk bins, and the meat counter.</p>
+
+<div class="pull-quote">
+  <p>"Real food — whole grains, vegetables, eggs, legumes, meat — has almost no marketing budget. That's exactly why it's a better deal."</p>
+</div>
+
+<p>Groceries are expensive right now, and that is genuinely hard. But not every dollar of that expense is unavoidable. Some of it is being spent on advertising budgets, corporate overhead, and cardboard boxes — dressed up to look like breakfast. It doesn't have to be. A bag of rolled oats at Walmart costs $3.48 for 42 oz. That's the same basic ingredient as Honey Nut Cheerios — just without the cartoon bee telling you to buy it.</p>
+
+<p>Start there.</p>
+
+</div><!-- /body-text -->
+</div><!-- /container -->
+
+<footer>
+  All pricing data sourced from Walmart.com, March 2026 &nbsp;·&nbsp; Ingredient cost estimates based on USDA wholesale commodity data &nbsp;·&nbsp; Cost breakdown based on published cereal industry margin analysis
+</footer>
+
+</body>
+</html>
