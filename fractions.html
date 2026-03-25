@@ -1,0 +1,181 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#fffdf7;color:#333}
+header{background:#e8643a;color:white;padding:2rem;text-align:center}
+header h1{font-size:2rem;margin-bottom:.5rem}
+header p{font-size:1.1rem;opacity:.9}
+.lesson{max-width:800px;margin:2rem auto;padding:0 1.5rem}
+.card{background:white;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.08);padding:2rem;margin-bottom:2rem;border-left:6px solid #e8643a}
+.card h2{font-size:1.5rem;color:#e8643a;margin-bottom:1rem}
+.card p{font-size:1.1rem;line-height:1.8;margin-bottom:1rem}
+.big-text{font-size:1.3rem;font-weight:bold;color:#333}
+.illustration{text-align:center;margin:1.5rem 0}
+.fraction-display{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;margin:1.5rem 0}
+.frac-box{display:inline-block;text-align:center;font-size:2rem;font-weight:bold}
+.frac-box .top{display:block;border-bottom:3px solid #333;padding:0 8px}
+.frac-box .bottom{display:block;padding:0 8px}
+.frac-label{font-size:.9rem;color:#888;margin-top:.5rem}
+.highlight{background:#fff3ee;border-radius:8px;padding:1rem;margin:1rem 0;border-left:4px solid #e8643a}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr}}
+.conversion-table{width:100%;border-collapse:collapse;margin:1rem 0}
+.conversion-table th{background:#e8643a;color:white;padding:.75rem;text-align:center}
+.conversion-table td{padding:.75rem;text-align:center;border-bottom:1px solid #eee;font-size:1.1rem}
+.conversion-table tr:nth-child(even){background:#fff3ee}
+footer{text-align:center;padding:2rem;color:#aaa;font-size:.9rem}
+</style>
+<header>
+  <h1>🍕 Understanding Fractions</h1>
+  <p>A simple guide for everyday cooking and baking</p>
+</header>
+<div class="lesson">
+  <div class="card">
+    <h2>📖 Lesson 1: What Is a Fraction?</h2>
+    <p>A <strong>fraction</strong> is a way to talk about a <strong>part of something</strong>.</p>
+    <p>Imagine you have a pizza. If you cut it into <strong>4 equal pieces</strong> and you take <strong>1 piece</strong> — you have <strong>one quarter</strong> of the pizza.</p>
+    <div class="illustration">
+      <svg width="220" height="220" viewBox="0 0 220 220">
+        <circle cx="110" cy="110" r="100" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/>
+        <path d="M110,110 L110,10 A100,100 0 0,1 210,110 Z" fill="#e8643a" opacity=".85"/>
+        <line x1="110" y1="10" x2="110" y2="210" stroke="#333" stroke-width="2"/>
+        <line x1="10" y1="110" x2="210" y2="110" stroke="#333" stroke-width="2"/>
+        <circle cx="110" cy="110" r="100" fill="none" stroke="#333" stroke-width="2"/>
+        <text x="155" y="68" font-size="22" font-weight="bold" fill="white" text-anchor="middle">¼</text>
+        <text x="110" y="240" font-size="14" fill="#666" text-anchor="middle">1 slice out of 4</text>
+      </svg>
+    </div>
+    <div class="highlight">
+      <p class="big-text">🍕 One slice = <strong>1/4</strong> of the pizza</p>
+    </div>
+    <p>We use fractions every day in the kitchen — for measuring cups, cutting food, and following recipes!</p>
+  </div>
+
+  <div class="card">
+    <h2>📖 Lesson 2: How to Read a Fraction</h2>
+    <p>Every fraction has <strong>two numbers</strong> with a line between them.</p>
+    <div class="fraction-display">
+      <div style="text-align:center">
+        <div class="frac-box">
+          <span class="top" style="color:#e8643a">1</span>
+          <span class="bottom">4</span>
+        </div>
+        <div class="frac-label">One quarter</div>
+      </div>
+      <div style="font-size:1.5rem;color:#aaa">→</div>
+      <div style="font-size:1.1rem;line-height:2">
+        <p><span style="color:#e8643a;font-weight:bold">Top number</span> = how many pieces <strong>you have</strong></p>
+        <p><span style="font-weight:bold">Bottom number</span> = how many pieces <strong>the whole is cut into</strong></p>
+      </div>
+    </div>
+    <div class="illustration">
+      <svg width="360" height="80" viewBox="0 0 360 80">
+        <text x="60" y="35" font-size="36" font-weight="bold" fill="#e8643a" text-anchor="middle">1</text>
+        <line x1="20" y1="42" x2="100" y2="42" stroke="#333" stroke-width="3"/>
+        <text x="60" y="72" font-size="36" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+        <line x1="105" y1="28" x2="160" y2="28" stroke="#e8643a" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="165" y="33" font-size="14" fill="#e8643a">← How many you have</text>
+        <line x1="105" y1="62" x2="160" y2="62" stroke="#555" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="165" y="67" font-size="14" fill="#555">← Total equal pieces</text>
+      </svg>
+    </div>
+    <div class="grid-2">
+      <div class="highlight">
+        <p style="text-align:center;font-size:2rem;font-weight:bold">1/2</p>
+        <p style="text-align:center">One half — 1 piece out of 2</p>
+      </div>
+      <div class="highlight">
+        <p style="text-align:center;font-size:2rem;font-weight:bold">3/4</p>
+        <p style="text-align:center">Three quarters — 3 pieces out of 4</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📖 Lesson 3: Common Fractions in the Kitchen</h2>
+    <p>These are the fractions you will see most often in recipes:</p>
+    <div class="illustration">
+      <svg width="340" height="160" viewBox="0 0 340 160">
+        <rect x="10" y="40" width="60" height="100" rx="4" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/>
+        <rect x="10" y="115" width="60" height="25" rx="4" fill="#e8643a"/>
+        <text x="40" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">¼ cup</text>
+        <rect x="95" y="40" width="60" height="100" rx="4" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/>
+        <rect x="95" y="90" width="60" height="50" rx="4" fill="#e8643a"/>
+        <text x="125" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">½ cup</text>
+        <rect x="180" y="40" width="60" height="100" rx="4" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/>
+        <rect x="180" y="65" width="60" height="75" rx="4" fill="#e8643a"/>
+        <text x="210" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">¾ cup</text>
+        <rect x="265" y="40" width="60" height="100" rx="4" fill="#e8643a" stroke="#ccc" stroke-width="2"/>
+        <text x="295" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">1 cup</text>
+      </svg>
+    </div>
+    <table class="conversion-table">
+      <tr><th>Fraction</th><th>Say it like this</th><th>Means...</th></tr>
+      <tr><td><strong>1/4</strong></td><td>one quarter</td><td>1 piece out of 4</td></tr>
+      <tr><td><strong>1/3</strong></td><td>one third</td><td>1 piece out of 3</td></tr>
+      <tr><td><strong>1/2</strong></td><td>one half</td><td>1 piece out of 2</td></tr>
+      <tr><td><strong>2/3</strong></td><td>two thirds</td><td>2 pieces out of 3</td></tr>
+      <tr><td><strong>3/4</strong></td><td>three quarters</td><td>3 pieces out of 4</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>📖 Lesson 4: Which Fraction Is Bigger?</h2>
+    <p>This is easy to remember: <strong>a bigger bottom number means smaller pieces.</strong></p>
+    <div class="illustration">
+      <svg width="320" height="100" viewBox="0 0 320 100">
+        <rect x="10" y="15" width="140" height="30" rx="6" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/>
+        <rect x="10" y="15" width="70" height="30" rx="6" fill="#e8643a"/>
+        <text x="80" y="65" font-size="14" fill="#333" text-anchor="middle">½</text>
+        <rect x="170" y="15" width="140" height="30" rx="6" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/>
+        <rect x="170" y="15" width="35" height="30" rx="6" fill="#e8643a"/>
+        <text x="240" y="65" font-size="14" fill="#333" text-anchor="middle">¼</text>
+        <text x="160" y="35" font-size="20" fill="#333" text-anchor="middle">&gt;</text>
+        <text x="160" y="85" font-size="13" fill="#888" text-anchor="middle">½ is bigger than ¼</text>
+      </svg>
+    </div>
+    <div class="highlight">
+      <p>🧠 <strong>Tip:</strong> Think of it this way — if you cut a cake into 2 pieces, each piece is <em>big</em>. If you cut the same cake into 8 pieces, each piece is <em>tiny</em>.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📖 Lesson 5: Converting Fractions in the Kitchen</h2>
+    <p>Sometimes a recipe calls for a measurement you don't have a cup for. Here's how to swap them!</p>
+    <div class="illustration">
+      <svg width="320" height="130" viewBox="0 0 320 130">
+        <rect x="10" y="20" width="55" height="80" rx="4" fill="#e8643a" stroke="#ccc" stroke-width="2"/>
+        <text x="37" y="70" font-size="18" font-weight="bold" fill="white" text-anchor="middle">¼</text>
+        <text x="80" y="70" font-size="26" fill="#666" text-anchor="middle">+</text>
+        <rect x="100" y="20" width="55" height="80" rx="4" fill="#e8643a" stroke="#ccc" stroke-width="2"/>
+        <text x="127" y="70" font-size="18" font-weight="bold" fill="white" text-anchor="middle">¼</text>
+        <text x="175" y="70" font-size="26" fill="#666" text-anchor="middle">=</text>
+        <rect x="200" y="20" width="55" height="80" rx="4" fill="#c0392b" stroke="#ccc" stroke-width="2"/>
+        <text x="227" y="70" font-size="18" font-weight="bold" fill="white" text-anchor="middle">½</text>
+        <text x="160" y="120" font-size="13" fill="#888" text-anchor="middle">¼ + ¼ = ½</text>
+      </svg>
+    </div>
+    <table class="conversion-table">
+      <tr><th>You need</th><th>Use this instead</th></tr>
+      <tr><td><strong>½ cup</strong></td><td>2 × ¼ cup</td></tr>
+      <tr><td><strong>¾ cup</strong></td><td>3 × ¼ cup</td></tr>
+      <tr><td><strong>1 cup</strong></td><td>2 × ½ cup &nbsp;or&nbsp; 4 × ¼ cup</td></tr>
+      <tr><td><strong>⅔ cup</strong></td><td>2 × ⅓ cup</td></tr>
+    </table>
+    <div class="highlight">
+      <p>🥄 <strong>Kitchen tip:</strong> If you only have a ¼ cup measure, you can make ANY recipe — just count how many times you fill it!</p>
+    </div>
+  </div>
+</div>
+<footer>Made with ❤️ by Rick Scherle</footer>
+<script>
+const html='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Understanding Fractions</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:\'Segoe UI\',Arial,sans-serif;background:#fffdf7;color:#333}header{background:#e8643a;color:white;padding:2rem;text-align:center}header h1{font-size:2rem;margin-bottom:.5rem}header p{font-size:1.1rem;opacity:.9}.lesson{max-width:800px;margin:2rem auto;padding:0 1.5rem}.card{background:white;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.08);padding:2rem;margin-bottom:2rem;border-left:6px solid #e8643a}.card h2{font-size:1.5rem;color:#e8643a;margin-bottom:1rem}.card p{font-size:1.1rem;line-height:1.8;margin-bottom:1rem}.big-text{font-size:1.3rem;font-weight:bold;color:#333}.illustration{text-align:center;margin:1.5rem 0}.fraction-display{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;margin:1.5rem 0}.frac-box{display:inline-block;text-align:center;font-size:2rem;font-weight:bold}.frac-box .top{display:block;border-bottom:3px solid #333;padding:0 8px}.frac-box .bottom{display:block;padding:0 8px}.frac-label{font-size:.9rem;color:#888;margin-top:.5rem}.highlight{background:#fff3ee;border-radius:8px;padding:1rem;margin:1rem 0;border-left:4px solid #e8643a}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}@media(max-width:500px){.grid-2{grid-template-columns:1fr}}.conversion-table{width:100%;border-collapse:collapse;margin:1rem 0}.conversion-table th{background:#e8643a;color:white;padding:.75rem;text-align:center}.conversion-table td{padding:.75rem;text-align:center;border-bottom:1px solid #eee;font-size:1.1rem}.conversion-table tr:nth-child(even){background:#fff3ee}footer{text-align:center;padding:2rem;color:#aaa;font-size:.9rem}</style></head><body><header><h1>🍕 Understanding Fractions</h1><p>A simple guide for everyday cooking and baking</p></header><div class="lesson"><div class="card"><h2>📖 Lesson 1: What Is a Fraction?</h2><p>A <strong>fraction</strong> is a way to talk about a <strong>part of something</strong>.</p><p>Imagine you have a pizza. If you cut it into <strong>4 equal pieces</strong> and you take <strong>1 piece</strong> — you have <strong>one quarter</strong> of the pizza.</p><div class="illustration"><svg width="220" height="220" viewBox="0 0 220 220"><circle cx="110" cy="110" r="100" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/><path d="M110,110 L110,10 A100,100 0 0,1 210,110 Z" fill="#e8643a" opacity=".85"/><line x1="110" y1="10" x2="110" y2="210" stroke="#333" stroke-width="2"/><line x1="10" y1="110" x2="210" y2="110" stroke="#333" stroke-width="2"/><circle cx="110" cy="110" r="100" fill="none" stroke="#333" stroke-width="2"/><text x="155" y="68" font-size="22" font-weight="bold" fill="white" text-anchor="middle">¼</text><text x="110" y="240" font-size="14" fill="#666" text-anchor="middle">1 slice out of 4</text></svg></div><div class="highlight"><p class="big-text">🍕 One slice = <strong>1/4</strong> of the pizza</p></div><p>We use fractions every day in the kitchen — for measuring cups, cutting food, and following recipes!</p></div><div class="card"><h2>📖 Lesson 2: How to Read a Fraction</h2><p>Every fraction has <strong>two numbers</strong> with a line between them.</p><div class="fraction-display"><div style="text-align:center"><div class="frac-box"><span class="top" style="color:#e8643a">1</span><span class="bottom">4</span></div><div class="frac-label">One quarter</div></div><div style="font-size:1.5rem;color:#aaa">→</div><div style="font-size:1.1rem;line-height:2"><p><span style="color:#e8643a;font-weight:bold">Top number</span> = how many pieces <strong>you have</strong></p><p><span style="font-weight:bold">Bottom number</span> = how many pieces <strong>the whole is cut into</strong></p></div></div><div class="illustration"><svg width="360" height="80" viewBox="0 0 360 80"><text x="60" y="35" font-size="36" font-weight="bold" fill="#e8643a" text-anchor="middle">1</text><line x1="20" y1="42" x2="100" y2="42" stroke="#333" stroke-width="3"/><text x="60" y="72" font-size="36" font-weight="bold" fill="#333" text-anchor="middle">4</text><line x1="105" y1="28" x2="160" y2="28" stroke="#e8643a" stroke-width="1.5" stroke-dasharray="4"/><text x="165" y="33" font-size="14" fill="#e8643a">← How many you have</text><line x1="105" y1="62" x2="160" y2="62" stroke="#555" stroke-width="1.5" stroke-dasharray="4"/><text x="165" y="67" font-size="14" fill="#555">← Total equal pieces</text></svg></div><div class="grid-2"><div class="highlight"><p style="text-align:center;font-size:2rem;font-weight:bold">1/2</p><p style="text-align:center">One half — 1 piece out of 2</p></div><div class="highlight"><p style="text-align:center;font-size:2rem;font-weight:bold">3/4</p><p style="text-align:center">Three quarters — 3 pieces out of 4</p></div></div></div><div class="card"><h2>📖 Lesson 3: Common Fractions in the Kitchen</h2><p>These are the fractions you will see most often in recipes:</p><div class="illustration"><svg width="340" height="160" viewBox="0 0 340 160"><rect x="10" y="40" width="60" height="100" rx="4" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/><rect x="10" y="115" width="60" height="25" rx="4" fill="#e8643a"/><text x="40" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">¼ cup</text><rect x="95" y="40" width="60" height="100" rx="4" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/><rect x="95" y="90" width="60" height="50" rx="4" fill="#e8643a"/><text x="125" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">½ cup</text><rect x="180" y="40" width="60" height="100" rx="4" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/><rect x="180" y="65" width="60" height="75" rx="4" fill="#e8643a"/><text x="210" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">¾ cup</text><rect x="265" y="40" width="60" height="100" rx="4" fill="#e8643a" stroke="#ccc" stroke-width="2"/><text x="295" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">1 cup</text></svg></div><table class="conversion-table"><tr><th>Fraction</th><th>Say it like this</th><th>Means...</th></tr><tr><td><strong>1/4</strong></td><td>one quarter</td><td>1 piece out of 4</td></tr><tr><td><strong>1/3</strong></td><td>one third</td><td>1 piece out of 3</td></tr><tr><td><strong>1/2</strong></td><td>one half</td><td>1 piece out of 2</td></tr><tr><td><strong>2/3</strong></td><td>two thirds</td><td>2 pieces out of 3</td></tr><tr><td><strong>3/4</strong></td><td>three quarters</td><td>3 pieces out of 4</td></tr></table></div><div class="card"><h2>📖 Lesson 4: Which Fraction Is Bigger?</h2><p>This is easy to remember: <strong>a bigger bottom number means smaller pieces.</strong></p><div class="illustration"><svg width="320" height="100" viewBox="0 0 320 100"><rect x="10" y="15" width="140" height="30" rx="6" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/><rect x="10" y="15" width="70" height="30" rx="6" fill="#e8643a"/><text x="80" y="65" font-size="14" fill="#333" text-anchor="middle">½</text><rect x="170" y="15" width="140" height="30" rx="6" fill="#f5e6c8" stroke="#ccc" stroke-width="2"/><rect x="170" y="15" width="35" height="30" rx="6" fill="#e8643a"/><text x="240" y="65" font-size="14" fill="#333" text-anchor="middle">¼</text><text x="160" y="35" font-size="20" fill="#333" text-anchor="middle">&gt;</text><text x="160" y="85" font-size="13" fill="#888" text-anchor="middle">½ is bigger than ¼</text></svg></div><div class="highlight"><p>🧠 <strong>Tip:</strong> Think of it this way — if you cut a cake into 2 pieces, each piece is <em>big</em>. If you cut the same cake into 8 pieces, each piece is <em>tiny</em>.</p></div></div><div class="card"><h2>📖 Lesson 5: Converting Fractions in the Kitchen</h2><p>Sometimes a recipe calls for a measurement you don\'t have a cup for. Here\'s how to swap them!</p><div class="illustration"><svg width="320" height="130" viewBox="0 0 320 130"><rect x="10" y="20" width="55" height="80" rx="4" fill="#e8643a" stroke="#ccc" stroke-width="2"/><text x="37" y="70" font-size="18" font-weight="bold" fill="white" text-anchor="middle">¼</text><text x="80" y="70" font-size="26" fill="#666" text-anchor="middle">+</text><rect x="100" y="20" width="55" height="80" rx="4" fill="#e8643a" stroke="#ccc" stroke-width="2"/><text x="127" y="70" font-size="18" font-weight="bold" fill="white" text-anchor="middle">¼</text><text x="175" y="70" font-size="26" fill="#666" text-anchor="middle">=</text><rect x="200" y="20" width="55" height="80" rx="4" fill="#c0392b" stroke="#ccc" stroke-width="2"/><text x="227" y="70" font-size="18" font-weight="bold" fill="white" text-anchor="middle">½</text><text x="160" y="120" font-size="13" fill="#888" text-anchor="middle">¼ + ¼ = ½</text></svg></div><table class="conversion-table"><tr><th>You need</th><th>Use this instead</th></tr><tr><td><strong>½ cup</strong></td><td>2 × ¼ cup</td></tr><tr><td><strong>¾ cup</strong></td><td>3 × ¼ cup</td></tr><tr><td><strong>1 cup</strong></td><td>2 × ½ cup or 4 × ¼ cup</td></tr><tr><td><strong>⅔ cup</strong></td><td>2 × ⅓ cup</td></tr></table><div class="highlight"><p>🥄 <strong>Kitchen tip:</strong> If you only have a ¼ cup measure, you can make ANY recipe — just count how many times you fill it!</p></div></div></div><footer>Made with ❤️ by Rick Scherle</footer></body></html>';
+const blob=new Blob([html],{type:'text/html'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+a.href=url;
+a.download='fractions_course.html';
+a.style.cssText='display:block;text-align:center;margin:1rem auto 2rem;background:#e8643a;color:white;padding:.75rem 2rem;border-radius:8px;font-size:1rem;font-weight:bold;text-decoration:none;width:fit-content';
+a.textContent='⬇ Download fractions_course.html';
+document.querySelector('footer').after(a);
+</script>
