@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 11 — Projects | CLEAR System User's Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:#1A9882;--teal-light:#EAF6F2;--teal-mid:#0F6E56;
+    --amber:#E8960C;--dark:#1C1C1E;--mid:#444;--soft:#777;
+    --muted:#AAA;--rule:#E5E2DC;--bg:#FAFAF8;--white:#FFFFFF;--phone-bg:#0A0A0B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:17px;line-height:1.8}
+  .page-header{background:var(--white);border-bottom:1px solid var(--rule);padding:16px 40px;
+    display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100}
+  .logo-mark{width:28px;height:28px;background:var(--teal);border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Lora',serif;font-weight:600;font-size:14px;flex-shrink:0}
+  .logo-text{font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--dark)}
+  .logo-sep{color:var(--muted);margin:0 6px}
+  .logo-chapter{font-size:14px;color:var(--soft)}
+  .page{max-width:720px;margin:0 auto;padding:64px 40px 120px}
+  .chapter-num{font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--teal);font-weight:500;margin-bottom:14px}
+  h1{font-family:'Lora',serif;font-size:clamp(32px,5vw,48px);font-weight:600;
+    line-height:1.12;letter-spacing:-1px;color:var(--dark);margin-bottom:28px}
+  .chapter-intro{font-size:19px;line-height:1.7;color:var(--mid);font-weight:300;
+    border-left:3px solid var(--teal);padding-left:20px;margin-bottom:48px}
+  h2{font-family:'Lora',serif;font-size:26px;font-weight:600;letter-spacing:-0.4px;
+    color:var(--dark);margin:52px 0 18px;line-height:1.2}
+  h3{font-family:'Lora',serif;font-size:20px;font-weight:600;
+    color:var(--dark);margin:36px 0 12px}
+  p{margin-bottom:22px;color:var(--mid)}
+  p strong{color:var(--dark);font-weight:500}
+  p em{font-style:italic}
+  hr.section-rule{border:none;border-top:1px solid var(--rule);margin:56px 0}
+  .callout{background:var(--teal-light);border-left:3px solid var(--teal);
+    border-radius:0 12px 12px 0;padding:18px 22px;margin:28px 0}
+  .callout p{color:var(--teal-mid);margin:0;font-size:16px;line-height:1.7}
+  .callout p strong{color:var(--teal-mid)}
+  .callout-amber{background:rgba(232,150,12,0.06);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:18px 22px;margin:28px 0}
+  .callout-amber-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--amber);font-weight:600;margin-bottom:6px}
+  .callout-amber p{color:#7A5000;margin:0;font-size:16px;line-height:1.7}
+  .pull{font-family:'Lora',serif;font-size:21px;font-style:italic;color:var(--dark);
+    line-height:1.5;border-left:3px solid var(--amber);padding:0 0 0 22px;margin:36px 0}
+
+  /* Setup steps */
+  .setup-steps{display:flex;flex-direction:column;gap:0;margin:24px 0 32px}
+  .setup-step{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--rule);align-items:flex-start}
+  .setup-step:last-child{border-bottom:none}
+  .step-num{width:34px;height:34px;border-radius:10px;background:var(--teal);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Lora',serif;font-weight:600;font-size:14px;flex-shrink:0;margin-top:2px}
+  .step-name{font-weight:600;color:var(--dark);font-size:16px;margin-bottom:4px}
+  .step-desc{font-size:15px;color:var(--soft);line-height:1.65}
+  .step-note{font-size:13px;color:var(--teal-mid);margin-top:5px;font-style:italic}
+
+  /* Horizon cards */
+  .horizons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 28px}
+  @media(max-width:540px){.horizons{grid-template-columns:1fr}}
+  .horizon-card{background:var(--white);border:1px solid var(--rule);
+    border-radius:13px;padding:16px 18px}
+  .horizon-label{font-weight:600;color:var(--dark);font-size:15px;margin-bottom:4px}
+  .horizon-desc{font-size:14px;color:var(--soft);line-height:1.55}
+
+  /* Pace status */
+  .pace-block{background:#111;border-radius:14px;padding:20px 22px;margin:24px 0;
+    font-family:-apple-system,'SF Pro Text',Helvetica,sans-serif}
+  .pace-title{color:rgba(255,255,255,0.85);font-size:14px;font-weight:600;
+    margin-bottom:4px;letter-spacing:-0.2px}
+  .pace-sub{font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:14px}
+  .pace-bar-wrap{position:relative;height:8px;border-radius:4px;
+    background:rgba(255,255,255,0.07);margin-bottom:6px;overflow:hidden}
+  .pace-bar-actual{position:absolute;top:0;left:0;height:100%;
+    background:#1A9882;border-radius:4px}
+  .pace-bar-expected{position:absolute;top:0;left:0;height:100%;
+    background:transparent;border:1.5px solid rgba(255,255,255,0.25);border-radius:4px}
+  .pace-labels{display:flex;justify-content:space-between;
+    font-size:10px;color:rgba(255,255,255,0.3);margin-bottom:10px}
+  .pace-warning{font-size:12px;color:#E8960C;margin-top:8px}
+
+  /* Figure */
+  .figure{margin:44px 0;display:flex;flex-direction:column;align-items:center}
+  .figure-inner{background:#111;border-radius:24px;padding:28px;
+    width:100%;display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
+  .figure-caption{width:100%;padding:14px 4px 0;font-size:13px;color:var(--soft);
+    line-height:1.55;display:flex;gap:10px;align-items:flex-start}
+  .fig-num{font-weight:600;color:var(--teal);flex-shrink:0;font-size:12px;margin-top:1px}
+  .phone{width:252px;background:var(--phone-bg);border-radius:38px;
+    border:1.5px solid rgba(255,255,255,0.12);overflow:hidden;
+    font-family:-apple-system,'SF Pro Text',Helvetica,sans-serif;
+    position:relative;box-shadow:0 32px 64px rgba(0,0,0,0.4)}
+  .phone-island{position:absolute;top:11px;left:50%;transform:translateX(-50%);
+    width:90px;height:26px;background:#000;border-radius:14px;z-index:10}
+  .phone-home{height:20px;display:flex;align-items:center;justify-content:center}
+  .phone-home-bar{width:88px;height:4px;background:rgba(255,255,255,0.18);border-radius:2px}
+
+  /* Tip box */
+  .tip-box{background:var(--white);border:1px solid var(--rule);
+    border-radius:14px;padding:20px 24px;margin:28px 0}
+  .tip-box-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--teal);font-weight:600;margin-bottom:8px}
+  .tip-box p{color:var(--mid);font-size:15px;margin:0;line-height:1.65}
+
+  /* Nav */
+  .chapter-nav{display:flex;justify-content:space-between;align-items:center;
+    padding:32px 0 0;border-top:1px solid var(--rule);margin-top:72px;position:relative}
+  .nav-link{font-size:14px;color:var(--teal);text-decoration:none;font-weight:500}
+  .nav-chapter-label{font-size:12px;color:var(--muted);margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="logo-mark">C</div>
+  <span class="logo-text">CLEAR</span>
+  <span class="logo-sep">·</span>
+  <span class="logo-chapter">User's Guide</span>
+</header>
+
+<main class="page">
+
+  <div class="chapter-num">Part Four: Managing Your Work · Chapter 11</div>
+  <h1>Projects</h1>
+
+  <p class="chapter-intro">
+    A project is any outcome that requires more than one physical action to complete. Not a task with sub-tasks — a genuine multi-step outcome where the path isn't fully clear until you're moving through it. CLEAR keeps projects present in your system without letting them flood your daily view. Only one step surfaces at a time.
+  </p>
+
+  <h2>What makes something a project</h2>
+
+  <p>
+    The distinction between a task and a project matters. A task is a single physical action — "Call Henderson HVAC to schedule pump inspection." A project is a desired end state that requires multiple actions — "Water pump serviced before winter." The project exists to hold the outcome and the sequence of steps toward it. The task is what you actually do.
+  </p>
+
+  <p>
+    In practice, you often discover that something is a project during processing. You capture "deal with the water pump" and realize, as you write the title, that there are at least three steps: call for an estimate, approve the work, follow up on completion. That's a project. If you're not sure, ask: could I do this in one session without having to figure anything out? If the answer is no, it's probably a project.
+  </p>
+
+  <div class="callout-amber">
+    <div class="callout-amber-label">A project is an outcome, not a category</div>
+    <p>"USCIS" is not a project — it's a hat. "I-485 application filed and accepted" is a project. The title should always be a result, stated as if it's already done. Not "Work on the I-485 filing" — "I-485 application filed and accepted." This distinction determines what done looks like, which is the most important thing a project title can tell you.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <h2>Creating a project</h2>
+
+  <p>
+    Projects are created in two ways: directly from the inbox when you choose the Project path during processing, or manually from the Projects tab using the + button. Either way, the same eight-step setup flow runs.
+  </p>
+
+  <div class="setup-steps">
+
+    <div class="setup-step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-name">Outcome statement</div>
+        <div class="step-desc">What does done look like? Written as a result, not an activity. The system prompts: <em>"Describe the outcome, not the work."</em> This becomes the project title. It's worth spending a moment here — a clear outcome statement is what allows the system to suggest project linkage when you set your Big Three each week.</div>
+        <div class="step-note">Example: "Henderson HVAC proposal reviewed and approved" not "Deal with HVAC proposal"</div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-name">Hat</div>
+        <div class="step-desc">Which life area does this project belong to? One tap on your hat list. The hat determines the color coding throughout the project's lifetime — in the project list, on task rows, in the Weekly Architecture Session review.</div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-name">Horizon</div>
+        <div class="step-desc">When do you expect to complete this? Four options — this week, this month, this quarter, or someday. Horizon determines where the project surfaces in the project list and how urgently it's treated. Projects with no realistic timeline go in Someday; they stay in the system without cluttering the active view.</div>
+        <div class="step-note">Horizon can be updated at any time from the project detail view as circumstances change.</div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-name">Deadline</div>
+        <div class="step-desc">Has an outside party set a real deadline for this? Yes or No. If Yes, a date picker appears. This field is strictly for hard external deadlines — a regulatory filing date, a client delivery, a publisher. Self-imposed target dates are not supported here. If no outside party has set a date, leave this blank.</div>
+        <div class="step-note">Setting a deadline activates the pace status system — the progress bar that shows whether you're on track.</div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-name">Weekly outcome</div>
+        <div class="step-desc">Optional. A single sentence: <em>"What does progress look like this week?"</em> This field resets each week and is editable from the project detail view. It gives you a weekly anchor for the project without requiring a full breakdown of every step. Useful for long-horizon projects where the weekly goal is more useful than the distant final outcome.</div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-name">First action</div>
+        <div class="step-desc">The very next physical thing that needs to happen. This becomes the project's active next action — the only task from this project that will surface in the Launchpad. It should be specific and completable in one session. If you're not sure what the first step is, that's a signal: start with "Figure out what the first step is" — that's a valid task.</div>
+        <div class="step-note">This is the most important step. A project without a clear next action is a project that won't move.</div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-name">Quick Build</div>
+        <div class="step-desc">Brain-dump the remaining steps. One per line, as fast as you can type or speak. Don't worry about order, completeness, or phrasing — just get them out. The system accepts them as-is and queues them behind the first action. You can reorder, edit, and add more at any time from the project detail view.</div>
+        <div class="step-note">Skippable. If you can only see the first step, that's enough to start.</div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-name">People involved</div>
+        <div class="step-desc">Anyone whose participation the project depends on. Adds them from your contact list or creates a new contact inline. Name is the only required field at this stage. People linked to a project appear in the project detail view and get tracked in your relationship maintenance system.</div>
+        <div class="step-note">Skippable. Add people later from the project detail view if you're not sure yet.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- FIGURE 11.1 -->
+  <div class="figure">
+    <div class="figure-inner">
+
+      <!-- Step 6: First action -->
+      <div class="phone">
+        <div class="phone-island"></div>
+        <div style="padding:44px 18px 0;display:flex;flex-direction:column">
+          <div style="display:flex;gap:4px;margin-bottom:20px">
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:4;background:#1A9882"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:rgba(255,255,255,0.1)"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:rgba(255,255,255,0.1)"></div>
+          </div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.28);text-transform:uppercase;
+            letter-spacing:.08em;margin-bottom:8px">Step 6 of 8 · First action</div>
+          <div style="color:#fff;font-size:18px;font-weight:700;letter-spacing:-0.3px;
+            line-height:1.2;margin-bottom:6px">What's the very<br/>next step?</div>
+          <div style="color:rgba(255,255,255,0.3);font-size:12px;margin-bottom:16px;line-height:1.5">
+            One physical action. Specific enough to start without thinking.</div>
+          <div style="background:rgba(255,255,255,0.05);border:0.5px solid rgba(26,152,130,0.4);
+            border-radius:13px;padding:14px 16px;margin-bottom:12px">
+            <div style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.5">
+              Call Henderson HVAC at (707) 555-0422 to request a pump inspection estimate</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.08);
+            border-radius:11px;padding:9px 13px;margin-bottom:16px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.22)">
+              💡 Tip: Start with a verb. "Call," "Draft," "Review," "Schedule."</div>
+          </div>
+          <div style="background:#1A9882;border-radius:12px;padding:12px;
+            text-align:center;color:#fff;font-size:13px;font-weight:600">
+            Continue →</div>
+        </div>
+        <div style="height:16px"></div>
+        <div class="phone-home"><div class="phone-home-bar"></div></div>
+      </div>
+
+      <!-- Step 7: Quick Build -->
+      <div class="phone">
+        <div class="phone-island"></div>
+        <div style="padding:44px 18px 0;display:flex;flex-direction:column">
+          <div style="display:flex;gap:4px;margin-bottom:20px">
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:#1A9882;opacity:.5"></div>
+            <div style="height:3px;border-radius:2px;flex:4;background:#1A9882"></div>
+            <div style="height:3px;border-radius:2px;flex:1;background:rgba(255,255,255,0.1)"></div>
+          </div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.28);text-transform:uppercase;
+            letter-spacing:.08em;margin-bottom:8px">Step 7 of 8 · Quick Build</div>
+          <div style="color:#fff;font-size:18px;font-weight:700;letter-spacing:-0.3px;
+            line-height:1.2;margin-bottom:6px">What else needs<br/>to happen?</div>
+          <div style="color:rgba(255,255,255,0.3);font-size:12px;margin-bottom:14px;line-height:1.5">
+            One step per line. Don't overthink it — just get them out.</div>
+
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+            <div style="background:rgba(26,152,130,0.08);border:0.5px solid rgba(26,152,130,0.2);
+              border-radius:10px;padding:9px 13px;display:flex;align-items:center;gap:8px">
+              <span style="font-size:10px;color:rgba(26,152,130,0.6);flex-shrink:0">✓</span>
+              <span style="font-size:12px;color:rgba(255,255,255,0.6)">
+                Review estimate and approve or negotiate</span>
+            </div>
+            <div style="background:rgba(26,152,130,0.08);border:0.5px solid rgba(26,152,130,0.2);
+              border-radius:10px;padding:9px 13px;display:flex;align-items:center;gap:8px">
+              <span style="font-size:10px;color:rgba(26,152,130,0.6);flex-shrink:0">✓</span>
+              <span style="font-size:12px;color:rgba(255,255,255,0.6)">
+                Schedule service visit — need to be on-site</span>
+            </div>
+            <div style="background:rgba(26,152,130,0.08);border:0.5px solid rgba(26,152,130,0.2);
+              border-radius:10px;padding:9px 13px;display:flex;align-items:center;gap:8px">
+              <span style="font-size:10px;color:rgba(26,152,130,0.6);flex-shrink:0">✓</span>
+              <span style="font-size:12px;color:rgba(255,255,255,0.6)">
+                Confirm work completed — test pump</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:0.5px solid rgba(26,152,130,0.3);
+              border-radius:10px;padding:9px 13px;display:flex;align-items:center;gap:8px">
+              <span style="font-size:12px;color:rgba(255,255,255,0.25)">
+                Add another step...</span>
+              <span style="width:1.5px;height:13px;background:#1A9882;
+                border-radius:1px;margin-left:2px"></span>
+            </div>
+          </div>
+
+          <div style="font-size:11px;color:rgba(255,255,255,0.2);text-align:center;
+            margin-bottom:14px">3 steps added · skippable</div>
+          <div style="background:#1A9882;border-radius:12px;padding:12px;
+            text-align:center;color:#fff;font-size:13px;font-weight:600">
+            Done building →</div>
+        </div>
+        <div style="height:16px"></div>
+        <div class="phone-home"><div class="phone-home-bar"></div></div>
+      </div>
+
+    </div>
+    <div class="figure-caption">
+      <span class="fig-num">FIG. 11.1</span>
+      <span>Steps 6 and 7 of the project setup flow. Left: the first action — a specific, phone-in-hand task with a real phone number. Right: Quick Build in progress — three additional steps entered, a fourth being typed. The counter shows steps added; the step count updates live.</span>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <h2>The single next action principle</h2>
+
+  <p>
+    A project has exactly one active next action at all times. That one task is the only step from the project that surfaces in the Launchpad. Everything else in the project is hidden from daily operations — not deleted, not forgotten, just waiting behind the current step.
+  </p>
+
+  <div class="pull">
+    The entire project list is irrelevant until the current step is done. You don't need to see the full project. You need to see the next move.
+  </div>
+
+  <p>
+    When you complete the current next action, the system prompts: <em>"Great — [task] is done. What's the next step toward [project outcome]?"</em> If you ran the Quick Build during setup, the next queued step is suggested. You confirm it, or choose a different one, or add a new step if the situation has changed. The project advances by one action at a time.
+  </p>
+
+  <p>
+    You can always change the designated next action from the project detail view — tap "Change next action" to select a different task from the project's queue. Use this when circumstances change and a different step has become more urgent than the current one.
+  </p>
+
+  <div class="callout">
+    <p><strong>Why only one?</strong> The ADHD brain is particularly susceptible to project sprawl — the experience of opening a project view, seeing fifteen steps, and becoming overwhelmed into inaction. A single visible next action eliminates that decision entirely. There is only one thing to do. That thing either fits your current context or it doesn't. The system handles the rest.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <h2>Project horizons</h2>
+
+  <p>
+    Horizon is how CLEAR categorizes your projects by timeframe without requiring you to manage a complex priority system. Four options:
+  </p>
+
+  <div class="horizons">
+    <div class="horizon-card">
+      <div class="horizon-label">This week</div>
+      <div class="horizon-desc">Actively in motion right now. The next action is in your daily task pool. Surfaces prominently in the Weekly Architecture Session project review.</div>
+    </div>
+    <div class="horizon-card">
+      <div class="horizon-label">This month</div>
+      <div class="horizon-desc">Active but not immediate. Next action is in the task pool but weighted lower than this-week projects. Still visible in the Architecture Session.</div>
+    </div>
+    <div class="horizon-card">
+      <div class="horizon-label">This quarter</div>
+      <div class="horizon-desc">On the horizon. Next action exists but surfaces infrequently. Reviewed in the Architecture Session to check whether horizon needs updating.</div>
+    </div>
+    <div class="horizon-card">
+      <div class="horizon-label">Someday</div>
+      <div class="horizon-desc">Parked. Real but not timely. Next action is inert — won't surface in the Launchpad. Appears in the Someday review, not the active project list.</div>
+    </div>
+  </div>
+
+  <p>
+    Horizons are editable at any time from the project detail view. A project that was This Quarter last month might become This Week when circumstances shift. The project list defaults to showing This Week and This Month — the active layer. Tap the filter to expand to all horizons.
+  </p>
+
+  <hr class="section-rule">
+
+  <h2>Deadlines and pace tracking</h2>
+
+  <p>
+    When a project has a hard external deadline, the project detail view shows a pace status block — an honest picture of whether you're on track to meet it.
+  </p>
+
+  <div class="pace-block">
+    <div class="pace-title">USCIS I-485 application filed and accepted</div>
+    <div class="pace-sub">Due March 15 · 18 days remaining</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+      <span style="font-size:10px;color:rgba(255,255,255,0.3);width:56px;flex-shrink:0">Progress</span>
+      <div class="pace-bar-wrap" style="flex:1">
+        <div class="pace-bar-actual" style="width:42%"></div>
+      </div>
+      <span style="font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">42%</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+      <span style="font-size:10px;color:rgba(255,255,255,0.3);width:56px;flex-shrink:0">Expected</span>
+      <div class="pace-bar-wrap" style="flex:1">
+        <div class="pace-bar-expected" style="width:58%"></div>
+      </div>
+      <span style="font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">58%</span>
+    </div>
+    <div class="pace-warning">⚠ Behind pace — roughly 2 tasks per day to meet this deadline.</div>
+  </div>
+
+  <p>
+    Two bars are shown simultaneously. The solid bar is actual completion — how many tasks in the project have been done. The outline bar is expected completion at current pace — where you'd need to be to finish on time. The gap between them is the honest picture.
+  </p>
+
+  <p>
+    Three pace statuses:
+  </p>
+
+  <p>
+    <strong>On track</strong> — actual completion is within 10% of expected. Green indicator. No action prompted.
+  </p>
+
+  <p>
+    <strong>Behind</strong> — actual is more than 10% below expected. Amber indicator. The notification: <em>"Behind pace — roughly N tasks per day to meet this deadline."</em>
+  </p>
+
+  <p>
+    <strong>At risk</strong> — the gap is severe. Red indicator. When a deadline is within 14 days and the project is at risk, it's automatically elevated as a Big Three candidate in the next Architecture Session: <em>"[Project] has a hard deadline in N days and is behind pace."</em> This card cannot be dismissed without a response — you either add it to your Big Three or explicitly acknowledge the situation and move on.
+  </p>
+
+  <p>
+    At-risk projects also receive a fit score boost: all tasks within the project surface more aggressively in the Now list, giving the project active advocacy even before you consciously prioritize it.
+  </p>
+
+  <hr class="section-rule">
+
+  <h2>When a project stalls</h2>
+
+  <p>
+    A project is flagged as stalled when its next action hasn't been started in seven or more days and no tasks in the project have been completed in that period. CLEAR surfaces a gentle weekly notification: <em>"Your [Project Name] project hasn't had any movement in 10 days. Want to look at it?"</em>
+  </p>
+
+  <p>
+    Stalled projects also appear prominently in the Weekly Architecture Session's project review screen — for each stalled project, the session prompts: <em>"What is the very next physical action?"</em> This isn't optional. The session doesn't advance until you either provide a next action, mark the project done, or park it to Someday. A stalled project without a clear next action is the most common cause of projects dying quietly without resolution.
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-box-label">On reactivating stalled projects</div>
+    <p>When a project stalls, the most useful question is usually the same as the one that started it: "What is the very next physical action?" Not "Why is this stalled?" or "What should I do about this project?" — just: what would I do first if I were going to work on this right now? If the answer is clear, the project isn't really stalled — it just needs a nudge. If the answer isn't clear, that's the next action: figure out what the next action is.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <h2>Adding steps over time</h2>
+
+  <p>
+    Projects don't need to be fully mapped at creation. The Quick Build step in setup is where you brain-dump what you can see — but for long-horizon projects or complex ones, you often can't see more than the next two or three steps from where you stand. That's fine. The system is designed for it.
+  </p>
+
+  <p>
+    From any project's detail view, the "Add steps" button opens the same Quick Build interface used during setup. Add as many steps as you can see from your current position. They queue behind the current next action and surface in sequence as earlier steps are completed.
+  </p>
+
+  <p>
+    No metadata is required when adding steps through Quick Build — you can enter titles fast and fill in energy, time estimate, and other fields from the individual task detail screen afterward. Speed matters here: the goal is to externalize the steps while you can see them, not to stop and process each one fully.
+  </p>
+
+  <nav class="chapter-nav">
+    <div style="position:absolute;left:50%;transform:translateX(-50%)">
+      <a href="CLEAR-Guide-Index.html" style="font-size:13px;color:var(--muted);
+        text-decoration:none;display:flex;align-items:center;gap:4px;">
+        <span style="font-size:11px">☰</span> Contents
+      </a>
+    </div>
+    <div>
+      <div class="nav-chapter-label">← Previous</div>
+      <a href="CLEAR-Guide-Chapter-10.html" class="nav-link">Chapter 10 — Tasks in Depth</a>
+    </div>
+    <div style="text-align:right">
+      <div class="nav-chapter-label">Next →</div>
+      <a href="CLEAR-Guide-Chapter-12.html" class="nav-link">Chapter 12 — Recurring Tasks</a>
+    </div>
+  </nav>
+
+</main>
+</body>
+</html>
