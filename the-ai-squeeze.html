@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Squeeze</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #8b2500;
+    --gray: #6b6b6b;
+    --rule: #d4cfc7;
+    --highlight: #f0ebe3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.75;
+    font-size: 19px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .header {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 24px 0;
+  }
+
+  .header .category {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: clamp(36px, 5.5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    font-style: italic;
+    color: var(--gray);
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .byline {
+    font-size: 15px;
+    color: var(--gray);
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  article {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 100px;
+  }
+
+  article p {
+    margin-bottom: 24px;
+  }
+
+  article h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 56px 0 24px;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  article h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 40px 0 16px;
+    color: var(--ink);
+  }
+
+  .drop-cap::first-letter {
+    float: left;
+    font-size: 72px;
+    line-height: 0.8;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 6px 10px 0 0;
+  }
+
+  .pullquote {
+    margin: 48px 0;
+    padding: 32px 0 32px 28px;
+    border-left: 3px solid var(--accent);
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .pullquote cite {
+    display: block;
+    font-size: 15px;
+    font-style: normal;
+    color: var(--gray);
+    margin-top: 12px;
+  }
+
+  .section-break {
+    text-align: center;
+    margin: 56px 0;
+    color: var(--rule);
+    font-size: 24px;
+    letter-spacing: 12px;
+  }
+
+  .prompt-box {
+    background: var(--ink);
+    color: #e8e4de;
+    border-radius: 4px;
+    padding: 36px 32px;
+    margin: 40px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+
+  .prompt-box .prompt-label {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .prompt-box p {
+    margin-bottom: 18px;
+    color: #e8e4de;
+  }
+
+  .prompt-box strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .how-to {
+    background: var(--highlight);
+    border-radius: 4px;
+    padding: 32px;
+    margin: 40px 0;
+  }
+
+  .how-to h3 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .how-to p {
+    font-size: 17px;
+    margin-bottom: 16px;
+  }
+
+  .how-to p:last-child {
+    margin-bottom: 0;
+  }
+
+  em.term {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .footer-note {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    border-top: 1px solid var(--rule);
+    font-size: 15px;
+    color: var(--gray);
+    font-style: italic;
+  }
+
+  .article-image {
+    margin: 48px 0;
+    text-align: center;
+  }
+
+  .article-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .article-image .caption {
+    font-size: 14px;
+    color: var(--gray);
+    font-style: italic;
+    margin-top: 12px;
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .header { padding-top: 48px; }
+    article h2 { font-size: 24px; }
+    .pullquote { font-size: 20px; }
+    .prompt-box { padding: 24px 18px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="category">Strategy &amp; AI</div>
+  <h1>The AI Squeeze</h1>
+  <div class="subtitle">The one idea you need to understand before you reorg around AI.</div>
+  <div class="byline">By Rick Scherle</div>
+</div>
+
+<article>
+
+<p class="drop-cap">We don't know who discovered water, but we're pretty sure it wasn't a fish. The most obvious things in the world are invisible to the creatures swimming in them. For all of modern capitalism, the corporation was water. It was so ubiquitous, so seemingly natural, that nobody in the field of economics bothered to ask the one question that should have come first: why does it exist at all?</p>
+
+<p>It took a 21-year-old kid from London to finally ask it. And the answer he found is about to become the most important idea in your organization.</p>
+
+<h2>The Question</h2>
+
+<p>In 1931, a young commerce student named Ronald Coase was at the London School of Economics listening to a professor explain Adam Smith's invisible hand — the idea that free markets, operating through the price mechanism, coordinate economic activity with extraordinary efficiency. Coase found it revelatory. He also saw a paradox.</p>
+
+<p>If the price mechanism was so good at coordinating everything — if the open market was the most efficient way to allocate resources — then why did we have companies? Why didn't everyone just contract with everyone else, transaction by transaction, the way the theory implied they should? Why did thousands of people show up to the same building every day and take orders from a manager instead of negotiating every task on the open market?</p>
+
+<p>Surprisingly, no one had asked this. Not Adam Smith. Not Alfred Marshall. The firm was just <em>there</em>, a given, an assumption so deeply embedded that questioning it felt almost absurd.</p>
+
+<div class="pullquote">
+  The question was so simple it was almost embarrassing. If markets are efficient, why do companies exist?
+</div>
+
+<p>Coase won a traveling scholarship and crossed the Atlantic to find out. He visited factories — Ford, General Motors, industrial operations of every kind — not as a dignitary but as a broke 21-year-old with a notebook, looking at how work was actually organized on the ground.</p>
+
+<p>What he saw was friction. Everywhere, friction. Finding a supplier takes time. Negotiating a contract takes effort. Verifying quality takes resources. Enforcing an agreement when things go wrong takes even more. Every single transaction in the open market carried costs that the elegant models ignored.</p>
+
+<p>But inside the firm? A manager says "do this" and it gets done. No negotiation. No contract. No search costs. The firm replaced thousands of expensive market transactions with a single employment relationship.</p>
+
+<p>Here was the answer. Firms exist because, for a certain range of activities, it is cheaper to coordinate work under a roof than to buy it piece by piece on the open market. The boundary of the firm — what it does internally versus what it contracts out — settles at the point where the cost of internal coordination equals the cost of going to the market. Coase called these <em class="term">transaction costs</em>.</p>
+
+<p>He wrote it up in 1937 as "The Nature of the Firm." The paper was ignored for thirty years — too simple, too observational, not enough equations for a profession chasing mathematical rigor. It wasn't until the 1970s that other economists picked up the thread and built it into a full body of theory. Coase won the Nobel Prize in 1991, at eighty, and used the occasion to scold the profession for decades of what he called "blackboard economics" — models disconnected from how businesses actually work.</p>
+
+<p>Here is why that matters to you: Coase didn't just explain why firms exist. He explained how big they should be. And if you've been paying attention to the last twenty years of business, his framework explains what you've been watching.</p>
+
+<h2>The Moving Boundary</h2>
+
+<p>If the firm's boundary sits where internal coordination costs equal external transaction costs, then anything that changes those costs moves the boundary. This is not an abstract idea. We've been watching it restructure business for the past forty years — and it provides an explanation for a lot of recent business phenomena.</p>
+
+<p>The internet lowered the cost of finding suppliers, comparing prices, and communicating across distances. Outsourcing boomed. Offshoring followed. Companies that once made everything in-house started contracting out everything, from manufacturing to customer service. The Coasean boundary contracted because external transaction costs dropped.</p>
+
+<p>Enterprise software — ERP systems, CRMs, project management platforms — lowered the cost of internal coordination. Companies could manage more complexity with fewer people.</p>
+
+<p>Globalization, containerized shipping, standardized protocols, digital payments — every one of these was a transaction cost reduction that reshaped which activities happened inside firms and which happened in the market.</p>
+
+<p>Then the smartphone put a camera and a computer, a GPS, and high-speed internet in everybody's hand. That didn't just lower transaction costs — it obliterated them for an entire class of work. Suddenly any individual could find a job, accept it, navigate to it, document it, invoice it, and get paid — all from a device in their pocket. When the organizational infrastructure required to coordinate a workforce became an app, Millions of people became tiny companies.</p>
+
+<p>And here we are: The explosion of outsourcing. The rise of the gig economy — over 70 million Americans now freelancing, more than a third of the workforce, projected to become the majority by 2027. Platforms like Fiverr, Upwork, Uber, and DoorDash didn't just create new business models — they made it trivially cheap to find, hire, and pay someone outside the firm for a single task. That's transaction costs dropping. The average size of startups has been steadily declining for decades. Midsize companies are being hollowed out — fewer of them, struggling harder, squeezed between nimble small firms below and scaled giants above.</p>
+
+<p>Everything we've attributed to "disruption" or "the future of work" or "the gig economy" can be explained in one place: Coase's boundary moving, exactly as his framework predicts, as the costs of going outside the firm keep falling.</p>
+
+<p>All of those changes, significant as they were, came out of the same box. They shaved costs at the margins. They made existing organizational forms leaner. They did not fundamentally alter what the smallest unit of manageable work looked like.</p>
+
+<p>And we're not done.</p>
+
+<h2>The Atom Splits</h2>
+
+<p>There is a principle buried in Coase's framework that most people miss: every transaction has to take place around a negotiable unit of work. And the smaller the unit, the larger the proportion of the cost that gets eaten by the transaction itself. This is why we buy eggs by the dozen instead of one at a time. It's also why we buy them at the same place we buy milk, sugar, and — these days — T-shirts and garden supplies. Bundling is not a convenience. It is an economic response to transaction costs.</p>
+
+<p>The same principle explains why companies bundle tasks into roles, roles into departments, and departments into divisions. The transaction cost of managing each piece individually was too high, so we packaged them together. That's not a management philosophy — it's economics.</p>
+
+<div class="article-image">
+  <img src="shrinking-unit-of-work.jpg" alt="The Shrinking Unit of Work — from The Campaign in the 1990s down to The Pixel today">
+</div>
+
+<p>But technology keeps shrinking the viable unit of work. Look what happened with Adobe and Figma. For decades, Adobe's atomic unit of work was the <em>document</em> — the Photoshop file, the Illustrator file, the InDesign layout. You bought a massive application, installed it locally, created a file, saved it, exported it, emailed it, waited for feedback, incorporated changes, and re-exported. Every handoff was a transaction heavy with friction. The whole creative industry organized itself around that unit: the deliverable, the file, the final proof. And for a long time, Adobe owned it.</p>
+
+<p>Figma shrank the unit of work to the <em>component</em>. A single button. A color token. A comment on one element of one screen. Multiple people work on the same design simultaneously, in a browser, with no install, no export, no version management. The transaction cost of creative collaboration dropped to near zero — and with it, the entire organizational structure that Adobe's model rested upon began to dissolve. Figma's market share went from 8% to 57% in three years. That's not a product victory. That's a Coasean boundary shift.</p>
+
+<div class="article-image">
+  <img src="scriptorium-vs-components.jpg" alt="Left: scribes working alone on complete manuscripts. Right: many hands collaboratively assembling components into a single design.">
+</div>
+
+<p>Now AI is doing the same thing — but to knowledge work broadly. It is changing the smallest unit of work that can be independently executed.</p>
+
+<p>In corporate marketing — to take a concrete example — the smallest practical unit of outsourceable work used to be the <em>asset</em>. A blog post. An email campaign. A landing page. You could hand that to a freelancer or an agency and get something back. Below that level — the research, the drafting, the revision, the formatting, the variant testing — the overhead of briefing and reviewing made it impractical to transact. So companies kept all of that bundled inside a team. Inside the firm.</p>
+
+<p>But AI pushes the atomic unit of work down to something far smaller. A single decision. A color change. A byte, literally. Write this headline. Resize this graphic. Analyze this customer segment. Score this lead. Generate three subject line variants and predict which will perform best. Each of these used to be an invisible five minutes embedded in someone's larger workflow. Now each one is an independently executable task at near-zero marginal cost.</p>
+
+<p>This is not automation in the way we've talked about automation for the last twenty years. Automation replaced repetitive, predictable, manual tasks. What AI is doing is different. It is making <em>cognitive</em> micro-tasks executable without human labor. We're talking about white collar work. And it's doing it on both sides of the Coasean boundary simultaneously.</p>
+
+<p>Inside the firm: AI makes internal coordination cheaper. Fewer people are needed to manage information flow, generate reports, draft communications, and handle the connective work that holds organizations together (like writing memos to the remaining people). This means firms can run leaner. Which means that they must.</p>
+
+<p>Outside the firm: AI makes external capability accessible. A single strategist with the right AI stack can produce what used to require a department. The transaction cost of going to market for sophisticated knowledge work has collapsed.</p>
+
+<p>With pressure from both sides, the firm gets squeezed. We've all felt it; we just haven't known where the pressure was coming from.</p>
+
+<div class="pullquote">
+  AI doesn't just automate tasks. It changes the smallest unit of work that can be independently executed — and when that changes, organizational structure has to follow.
+</div>
+
+<h2>What This Means for You</h2>
+
+<p>If you manage a team, run a division, or lead a company, this is not a technology question. It is an organizational design question. And it is arriving whether you have a strategy for it or not.</p>
+
+<p>Every role in your organization is a bundle of tasks. Some of those tasks are now executable by AI at near-zero cost. Some of them still require human judgment, relationship context, institutional knowledge, brand sensibility, strategic sequencing — the connective tissue that can't be atomized.</p>
+
+<p>The roles on your org chart were designed for a world where the bundling made sense. Where you needed a human to do the whole bundle because the pieces couldn't be separated and transacted independently. That world is ending.</p>
+
+<p>The question is not whether your org chart will change. It's whether you redesign it deliberately or let it degrade into a structure that no longer reflects how work actually gets done.</p>
+
+<h2>Change Your Org Chart Right Now</h2>
+
+<p>What follows is a practical exercise. You will need your current org chart — even a rough sketch will work — and access to an AI assistant like Claude, ChatGPT, or whatever tool your organization uses.</p>
+
+<p>Upload your org chart and use the following prompt. It will walk the AI through a structured analysis of your organization using the Coasean framework we've been discussing. What you'll get back is not a fantasy. It's a rigorous decomposition of where your firm's boundary actually sits today, and where it's likely to move.</p>
+
+<div class="prompt-box">
+  <span class="prompt-label">The Prompt</span>
+  <p>I'm uploading my organization's marketing org chart. I want you to redesign it for a world where AI has collapsed the transaction costs of knowledge work.</p>
+  <p>Use this framework:</p>
+  <p><strong>Ronald Coase argued that firms exist because internal coordination is cheaper than market transaction costs.</strong> AI is compressing those costs in both directions — making internal coordination leaner AND making external contracting viable at much smaller units of work. The smallest unit of marketing work is no longer the campaign or the asset — it's the individual decision or transformation (write a headline, score a lead, resize an image, analyze a segment).</p>
+  <p><strong>Step 1 — Decompose:</strong> For every role on this chart, break it into its actual daily tasks. Identify which tasks are now independently executable by AI at near-zero marginal cost.</p>
+  <p><strong>Step 2 — Identify the connective tissue:</strong> Which tasks in each role require judgment, relationship context, brand taste, institutional knowledge, or strategic sequencing that can't be atomized? These are the tasks that still justify a salaried human inside the firm boundary.</p>
+  <p><strong>Step 3 — Redesign:</strong> Propose a new org structure that reflects the shifted Coasean boundary. Show me what the org looks like when AI-executable tasks are removed from role definitions and the remaining human work is rebundled into roles that make sense. Be specific about which current roles merge, which disappear, which become fractional or external, and what new roles emerge.</p>
+  <p><strong>Step 4 — Transition map:</strong> Show me a realistic 12-month migration path from current state to redesigned state, including which changes are quick wins and which require cultural or contractual shifts.</p>
+  <p>Present the redesigned org as a clear hierarchy I can compare side-by-side with what I uploaded. Be direct and don't soften the conclusions.</p>
+</div>
+
+<div class="how-to">
+  <h3>How to Use This</h3>
+  <p><strong>Step 1:</strong> Open a new conversation in your AI tool of choice. Copy and paste the prompt above.</p>
+  <p><strong>Step 2:</strong> Upload your org chart. A screenshot, a PDF, even a photo of a whiteboard will work. The AI needs to see the roles and reporting structure. If you have budget figures or headcount per role, include those — it will make the financial analysis sharper.</p>
+  <p><strong>Step 3:</strong> Add a line at the top specifying your industry and company size. Context matters. A 50-person B2B SaaS company and a 5,000-person consumer brand will get very different redesigns.</p>
+  <p><strong>Step 4:</strong> Read the output critically. The AI doesn't know your culture, your politics, your specific people. It's giving you a structural analysis. Your job is to overlay the human realities — who can grow into new roles, where resistance will come from, what the actual pace of change can be.</p>
+  <p><strong>Step 5:</strong> Run it again with different assumptions. Ask it what happens if AI capability doubles in 18 months. Ask it what the org looks like if you cut the budget by 30% and maintain output. Ask it what you should hire for next. Each pass will sharpen your thinking.</p>
+</div>
+
+<h2>The Kid's Revenge</h2>
+
+<p>Ronald Coase died in 2013, at 102, still sharp, still frustrated with economists who wouldn't look at the real world. He never saw GPT-4. He never saw a marketing team of three outperform a department of twenty. He never saw a solo consultant with an AI stack walk into a boardroom and deliver what used to require an agency.</p>
+
+<p>But he gave us the framework to understand it. The question he carried to those factory floors in 1931 — <em>why does this organization exist in this form?</em> — is the most urgent question in business today. The answer is the same as it always was: because the costs of doing it another way were too high.</p>
+
+<p>Those costs are falling through the floor.</p>
+
+<p>Your org chart was designed for a transaction cost environment that no longer exists. The twenty-one-year-old kid from Willesden, limping through Depression-era factories with a notebook, figured out the principle. The rest is your problem.</p>
+
+</article>
+
+<div class="footer-note">
+  This piece is part of a series on the structural impact of AI on business organization. The prompt above is offered freely — use it, share it, adapt it. If it changes how you think about your team, it did its job. If it breaks your organization, remember it was free.
+</div>
+
+</body>
+</html>
