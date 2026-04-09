@@ -14,160 +14,28 @@
     --rule: #d4cfc7;
     --highlight: #f0ebe3;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Source Serif 4', Georgia, serif;
-    color: var(--ink);
-    background: var(--paper);
-    line-height: 1.75;
-    font-size: 18px;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .masthead {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 80px 24px 48px;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .masthead h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(42px, 6vw, 64px);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
-  }
-
-  .masthead p {
-    font-size: 17px;
-    color: var(--gray);
-    font-style: italic;
-    max-width: 520px;
-  }
-
-  .section-label {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 48px 24px 24px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .article-list {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  .article-item {
-    border-top: 1px solid var(--rule);
-    padding: 32px 0;
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .article-item:last-child {
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .article-item:hover .article-title {
-    color: var(--accent);
-  }
-
-  .article-category {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-
-  .article-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(22px, 3.5vw, 30px);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 10px;
-    transition: color 0.15s;
-  }
-
-  .article-subtitle {
-    font-size: 16px;
-    color: var(--gray);
-    font-style: italic;
-    line-height: 1.5;
-  }
-
-  .protected-section {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-  }
-
-  .protected-card {
-    background: var(--highlight);
-    border-radius: 4px;
-    padding: 32px;
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-  }
-
-  .protected-card .lock {
-    font-size: 28px;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
-  .protected-card h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .protected-card p {
-    font-size: 16px;
-    color: var(--gray);
-    font-style: italic;
-    margin-bottom: 16px;
-  }
-
-  .protected-card a {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.3px;
-  }
-
-  .protected-card a:hover {
-    text-decoration: underline;
-  }
-
-  footer {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 32px 24px 64px;
-    border-top: 1px solid var(--rule);
-    font-size: 14px;
-    color: var(--gray);
-    font-style: italic;
-  }
-
-  @media (max-width: 600px) {
-    .masthead { padding-top: 48px; }
-    .protected-card { flex-direction: column; gap: 12px; }
-  }
+  body { font-family: 'Source Serif 4', Georgia, serif; color: var(--ink); background: var(--paper); line-height: 1.75; font-size: 18px; -webkit-font-smoothing: antialiased; }
+  .masthead { max-width: 780px; margin: 0 auto; padding: 80px 24px 48px; border-bottom: 1px solid var(--rule); }
+  .masthead h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(42px, 6vw, 64px); font-weight: 900; line-height: 1.05; letter-spacing: -0.5px; margin-bottom: 16px; }
+  .masthead p { font-size: 17px; color: var(--gray); font-style: italic; max-width: 520px; }
+  .section-label { max-width: 780px; margin: 0 auto; padding: 48px 24px 24px; font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); }
+  .article-list { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .article-item { border-top: 1px solid var(--rule); padding: 32px 0; display: block; text-decoration: none; color: inherit; }
+  .article-item:last-child { border-bottom: 1px solid var(--rule); }
+  .article-item:hover .article-title { color: var(--accent); }
+  .article-category { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .article-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(22px, 3.5vw, 30px); font-weight: 700; line-height: 1.2; margin-bottom: 10px; transition: color 0.15s; }
+  .article-subtitle { font-size: 16px; color: var(--gray); font-style: italic; line-height: 1.5; }
+  .protected-section { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+  .protected-card { background: var(--highlight); border-radius: 4px; padding: 32px; display: flex; align-items: flex-start; gap: 24px; }
+  .protected-card .lock { font-size: 28px; line-height: 1; flex-shrink: 0; }
+  .protected-card h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .protected-card p { font-size: 16px; color: var(--gray); font-style: italic; margin-bottom: 16px; }
+  .protected-card a { font-size: 15px; font-weight: 600; color: var(--accent); text-decoration: none; letter-spacing: 0.3px; }
+  .protected-card a:hover { text-decoration: underline; }
+  footer { max-width: 780px; margin: 0 auto; padding: 32px 24px 64px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--gray); font-style: italic; }
+  @media (max-width: 600px) { .masthead { padding-top: 48px; } .protected-card { flex-direction: column; gap: 12px; } }
 </style>
 </head>
 <body>
@@ -177,50 +45,51 @@
   <p>Writing on technology, organizations, and the gap between how things work and how they should.</p>
 </div>
 
-<div class="section-label">Essays</div>
-
+<div class="section-label">AI Revolution</div>
 <div class="article-list">
-
   <a class="article-item" href="/ai-squeeze/">
-    <div class="article-category">Technology</div>
     <div class="article-title">The AI Squeeze</div>
     <div class="article-subtitle">How AI is restructuring who captures value — and who gets squeezed out.</div>
   </a>
-
-  <a class="article-item" href="/cereal/">
-    <div class="article-category">Economics</div>
-    <div class="article-title">You're Paying $4.44 for $0.18 Worth of Food</div>
-    <div class="article-subtitle">The real cost of boxed cereal.</div>
+  <a class="article-item" href="/end-of-vendor-lockin/">
+    <div class="article-title">AI Is the End of Vendor Lock-In</div>
+    <div class="article-subtitle">And SaaS companies should be worried.</div>
   </a>
-
   <a class="article-item" href="/power-and-progress/">
-    <div class="article-category">History</div>
     <div class="article-title">From Steam to Silicon: Why the Machine Is Never Enough</div>
     <div class="article-subtitle">Power and progress across two centuries of technological transformation.</div>
   </a>
+</div>
 
+<div class="section-label">Management</div>
+<div class="article-list">
   <a class="article-item" href="/lumber/">
-    <div class="article-category">Organizations</div>
     <div class="article-title">The AI Productivity Gap Is Breaking Your Organization</div>
     <div class="article-subtitle">A guide for organizational leaders navigating the new talent reality.</div>
   </a>
-
-  <a class="article-item" href="/two-worlds/">
-    <div class="article-category">Product</div>
-    <div class="article-title">Two Worlds, One Product</div>
-    <div class="article-subtitle">Why every successful product needs great engineering and great marketing.</div>
-  </a>
-
   <a class="article-item" href="/the-nop/">
-    <div class="article-category">Organizations</div>
     <div class="article-title">Meet Benicia Martinez, Our Best Employee. She Doesn't Exist.</div>
     <div class="article-subtitle">On the NOP — the response that closes the loop without consuming any real attention.</div>
   </a>
+</div>
 
+<div class="section-label">Marketing</div>
+<div class="article-list">
+  <a class="article-item" href="/two-worlds/">
+    <div class="article-title">Two Worlds, One Product</div>
+    <div class="article-subtitle">Why every successful product needs great engineering and great marketing.</div>
+  </a>
+</div>
+
+<div class="section-label">Culture</div>
+<div class="article-list">
+  <a class="article-item" href="/cereal/">
+    <div class="article-title">You're Paying $4.44 for $0.18 Worth of Food</div>
+    <div class="article-subtitle">The real cost of boxed cereal.</div>
+  </a>
 </div>
 
 <div class="section-label">Beta Access</div>
-
 <div class="protected-section">
   <div class="protected-card">
     <div class="lock">🔒</div>
@@ -238,4 +107,3 @@
 
 </body>
 </html>
-
