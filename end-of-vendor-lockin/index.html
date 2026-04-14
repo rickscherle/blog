@@ -354,9 +354,9 @@
 
   <div class="article-body">
 
-    <p class="lede">I want to tell you about an afternoon I spent asking an AI to commit an act of corporate piracy. Not real piracy, as it turned out — and the distinction is the entire point of this article.</p>
+    <p class="lede">I want to tell you about an afternoon I spent asking an AI to commit an act of corporate piracy. Not real piracy, as it turned out (the distinction is the entire point).</p>
 
-    <p>What I actually asked it to do was something considerably more interesting, and considerably more threatening to the enterprise software industry, than simple theft. I asked it to reproduce the <em>function</em> of a piece of software I despise, without copying a single line of the original code, without infringing any copyright, and without any access whatsoever to the original product's design.</p>
+    <p>What I actually asked it to do was something considerably more interesting, and considerably more threatening to the enterprise software industry, than simple theft. I asked it to reproduce the <em>function</em> of a piece of software I despise, without copying a single line of code, without infringing any copyright, without touching the original design.</p>
 
     <p>I asked it to clean-room engineer an expense reporting application. Something that does everything Concur does. Built from scratch, in an afternoon, from nothing but a plain-English description of what expense reporting needs to accomplish.</p>
 
@@ -365,7 +365,7 @@
 
     <h2>Why Concur</h2>
 
-    <p>I decided to pick on Concur because it is almost universally reviled. The interface feels like it was designed in 2003 and never meaningfully updated. Navigation is counterintuitive. Menus are buried. And common tasks require way more clicks than anyone could justify. First-time users almost universally need training to complete what should be simple tasks.</p>
+    <p>I decided to pick on Concur because it is almost universally reviled. The interface feels like it was designed in 2003 and never meaningfully updated. Navigation is counterintuitive. Menus are buried. And common tasks require way more clicks than anyone could justify. First-time users need training to complete what should be simple tasks.</p>
 
     <p>Here's how I did it. I gave my AI a couple of screenshots of the application and let it read the user guide and the help files. Then I asked it to write a specification for an application that did exactly what was described there. I fed that specification into another AI system and asked it to write a software system that did what the specification described.</p>
 
@@ -393,13 +393,13 @@
 
     <p>In 1981, IBM did something it had never done before. It built a computer entirely from parts sourced from other vendors. The processor came from Intel. The operating system came from Microsoft. The keyboard, the display adapter, the bus — all commodity components, publicly available to anyone.</p>
 
-    <p>This was a deliberate gamble. IBM's entire history was built on vertical integration — designing and manufacturing its own components so that competitors couldn't replicate what it made. Building the PC from off-the-shelf parts meant any competitor could buy the same parts and build the same machine. IBM's executives knew this. They accepted the risk because they needed to move fast — the personal computer market was growing without them, and a two-year design cycle wasn't going to cut it.</p>
+    <p>This was a deliberate gamble. IBM's entire history was built on vertical integration (designing and manufacturing its own components so competitors couldn't replicate what it made). Building the PC from off-the-shelf parts meant any competitor could buy the same parts and build the same machine. IBM's executives knew this. They accepted the risk because they needed to move fast. The personal computer market was growing without them, and a two-year design cycle wasn't going to cut it.</p>
 
     <p>But they weren't worried because they owned the BIOS. It was the first thing the machine ran when you powered it on. It initialized the hardware, found the operating system, and provided the foundational routines everything else depended on. IBM had written it themselves. IBM had copyrighted it. And IBM believed that copyright made them untouchable. You could buy the same Intel processor. You could license the same Microsoft operating system. But without a compatible BIOS, your machine couldn't run IBM PC software. And copying IBM's BIOS was infringement. That was their moat.</p>
 
     <p>Phoenix Technologies, a small Massachusetts software company, had a different idea. They split their engineering team in two and built a wall between them. The first group read IBM's BIOS from top to bottom and wrote down everything it did — every function, every behavior, every input and output — in plain English. Not how it worked. Just what it did. Then they handed that document to the second group and walked away.</p>
 
-    <p>The second group had never seen IBM's code. Some had been recruited specifically because they hadn't. Working only from the functional specification, they built a BIOS from scratch — every required behavior implemented their own way.</p>
+    <p>The second group had never seen IBM's code. Some had been recruited specifically because they hadn't. Working only from the functional specification, they built a BIOS from scratch, implementing every behavior themselves.</p>
 
     <p>When IBM's lawyers compared the two programs, they found something they couldn't sue over. Identical behavior. Zero shared code. No infringement, because copyright protects <em>expression</em>, not <em>function</em>. You can't own the idea of checking whether a keyboard is plugged in. You can only own the specific way you wrote that check. Phoenix had written it differently.</p>
 
@@ -410,9 +410,9 @@
 
     <h2>What SaaS Actually Sold You</h2>
 
-    <p>Here's the thing about most SaaS companies. They didn't invent new capabilities. They built better interfaces to capabilities organizations already had.</p>
+    <p>Here's the thing about most SaaS companies. They didn't invent new capabilities. They built better interfaces to processes organizations already ran.</p>
 
-    <p>Expense reporting existed before Concur. Project tracking existed before Asana. Customer relationship management existed before Salesforce — salespeople kept those records in manila folders and Rolodexes. The SaaS companies came in and said: we have a better way to do what you're already doing. A cleaner form. A faster workflow. A browser-based UI instead of a server in the basement. They were right, and it was genuinely valuable, and they charged platform prices for it.</p>
+    <p>Expense reporting existed before Concur. Project tracking existed before Asana. Customer relationship management existed before Salesforce (salespeople kept those records in manila folders and Rolodexes). The SaaS companies came in and said: we have a better way to do what you're already doing. A cleaner form. A faster workflow. A browser-based UI instead of a server in the basement. They were right. It was genuinely valuable. And they charged platform prices for it.</p>
 
     <p>The business model held together through a combination of real utility, long contracts, deep integrations, and the inertia that builds up when a hundred people in your organization have learned where all the buttons are. Switching was painful. So most companies didn't. And the SaaS vendors raised prices, added modules, and called the result a platform.</p>
 
@@ -423,7 +423,7 @@
 
     <h2>The SaaS Landscape</h2>
 
-    <p>Not all SaaS is equally exposed to what's coming. Most enterprise software falls into one of a few distinct categories — with some interesting cases in between — each with very different moats and very different futures.</p>
+    <p>Not all SaaS is equally exposed to what's coming. Most enterprise software falls into one of a few distinct categories (with some interesting cases in between), each with different moats and different futures.</p>
 
     <div class="category-block">
       <div class="category-block-header">The Vulnerability Map</div>
@@ -441,7 +441,7 @@
           Network Effect Businesses<br>
           <span class="threat threat-low">Low threat</span>
         </div>
-        <p class="category-desc">GitHub, LinkedIn, Slack. Their value is not primarily in the data they hold but in who else is already there. You cannot clean-room engineer the fact that every developer on earth has a GitHub account. The network is the product. AI may actually strengthen this category by making the network more useful.</p>
+        <p class="category-desc">GitHub, LinkedIn, Slack. Their value isn't in the data they hold. It's in who else is already there. You cannot clean-room engineer the fact that every developer on earth has a GitHub account. The network is the product. AI strengthens this category. More tools built on the network means more reason to be in it.</p>
       </div>
 
       <div class="category-item">
@@ -449,7 +449,7 @@
           Workflow &amp; UI Layer SaaS<br>
           <span class="threat threat-high">High threat</span>
         </div>
-        <p class="category-desc">Concur, Expensify, most travel management tools, many procurement point solutions, much of the project management space. These companies do not own the data in any meaningful sense — the data belongs to the system underneath them. They own the workflow, the UI, and the accumulated refinement of years of product iteration. That is exactly what AI can reproduce in an afternoon.</p>
+        <p class="category-desc">Concur, Expensify, most travel management tools, many procurement point solutions, much of the project management space. These companies don't own the data. It belongs to the system underneath them. They own the workflow, the UI, and years of UX polish. That is exactly what AI can reproduce in an afternoon.</p>
       </div>
 
       <div class="category-item">
@@ -457,7 +457,7 @@
           CRM &amp; Platform Hybrids<br>
           <span class="threat threat-mid">Moderate threat</span>
         </div>
-        <p class="category-desc">Salesforce is a complicated case. It has genuine data gravity — years of customer records, pipeline history. It also has an ecosystem that is difficult to replicate. But the workflow layer built on top of it — sequence tools, call recording products, forecasting overlays — is exposed in the same way any workflow layer is exposed.</p>
+        <p class="category-desc">Salesforce is a complicated case. It has genuine data gravity: years of customer records, pipeline history. It also has an ecosystem that is difficult to replicate. But everything built on top of it (sequence tools, call recording, forecasting overlays) is just as exposed as Concur.</p>
       </div>
 
     </div>
@@ -469,9 +469,9 @@
 
     <p>AI collapsed that timeline to an afternoon.</p>
 
-    <p>The specification stage — what Phoenix's first team spent months writing — now takes an hour of conversation. You already know what your expense reporting software needs to do. You use it every week. You have opinions about what it does wrong. Articulating the spec isn't hard when you've been living with the problem.</p>
+    <p>The specification stage (what Phoenix's first team spent months writing) now takes an hour. You already know what your expense reporting software needs to do. You use it every week. You have opinions about what it does wrong. Articulating the spec isn't hard when you've been living with the problem.</p>
 
-    <p>The implementation stage — what Phoenix's second team spent months building — now takes the rest of the afternoon. The AI comes in clean. It has never looked at Concur's code. It knows what a well-designed expense application should do because it's absorbed everything ever written about the subject. It builds from first principles, which means it builds differently.</p>
+    <p>The implementation stage (what Phoenix's second team spent months building) now takes the rest of the afternoon. The AI comes in clean. It has never looked at Concur's code. It knows what a well-designed expense application should do because it's absorbed everything ever written about the subject. It builds from first principles, which means it builds differently.</p>
 
     <div class="pullquote">
       <p>Same legal logic as clean room engineering. Same outcome. Cost: approximately zero.</p>
@@ -482,28 +482,28 @@
 
     <h2>The Opportunity Half</h2>
 
-    <p>This article has mostly been a threat assessment. But the same dynamic cuts the other way.</p>
+    <p>I've spent most of this article on the threat. But the same dynamic cuts the other way.</p>
 
     <p><strong>If you're an enterprise buyer, you just got a negotiating weapon you've never had before.</strong> You don't need to actually build the replacement. You need to demonstrate credibly that you could. A working prototype of your vendor's core workflow, built in a day, changes every renewal conversation. SaaS vendors have spent twenty years banking on the cost and pain of switching. That math just changed.</p>
 
-    <p><strong>If you're building a new product, the attack surface has never been wider.</strong> The engineering cost of competing with a workflow SaaS incumbent has collapsed. Five years ago, going up against Concur required years of development and a serious check from a VC. Today it requires an afternoon and a clear head. The companies that move on this first will take real market share from vendors that are still pricing like it's 2019.</p>
+    <p><strong>If you're building a new product, the attack surface has never been wider.</strong> The cost of going up against an incumbent like Concur has collapsed. Five years ago, going up against Concur required years of development and a serious check from a VC. Today it requires an afternoon and a clear head. The companies that move on this first will take real market share from vendors that are still pricing like it's 2019.</p>
 
-    <p><strong>If you're an incumbent, the path forward is visible — but only if you stop defending the wrong thing.</strong> The interface was never the real product. The real product is what you know. An expense management platform that has processed fifty million transactions knows things no clean-room replacement can replicate on day one: which expense categories correlate with audit flags, what meal amounts are normal for which industries, which approval chains slow down reimbursement and which ones don't. That institutional intelligence is the moat. The UI is not.</p>
+    <p><strong>If you're an incumbent, the path forward is visible. But only if you stop defending the wrong thing.</strong> The interface was never the real product. The real product is what you know. An expense management platform that has processed fifty million transactions knows things no clean-room replacement can touch on day one. Which expense categories flag in audits. What a normal meal bill looks like for a law firm versus a construction company. Which approval chains kill reimbursement speed and which ones don't. That institutional intelligence is the moat. The UI is not.</p>
 
-    <p><strong>And there's a new category opening up that couldn't exist before.</strong> Hyper-vertical SaaS — expense management built specifically for law firms, procurement tools built specifically for restaurant groups — was never economically viable when building software was expensive. It is now. The same AI that threatens generalist workflow tools makes specialist ones suddenly cheap to build. Niche is no longer a liability.</p>
+    <p><strong>And there's a new category that couldn't exist before.</strong> Hyper-vertical SaaS (expense management for law firms, procurement tools for restaurant groups) never made business sense when software was expensive. It is now. The same AI that threatens generalist workflow tools makes specialist ones suddenly cheap to build. Niche is no longer a liability.</p>
 
 
     <h2>The Conversation Nobody's Having</h2>
 
-    <p>I started this piece with a 1982 legal technique because I think it names what's actually happening more clearly than any amount of AI hype does.</p>
+    <p>I started this piece with a 1982 legal technique because it names what's actually happening more clearly than the usual AI hype.</p>
 
-    <p>Phoenix didn't steal IBM's BIOS. They described what it did, then built something that did the same thing differently. The law was on their side because function can't be owned — only expression can. IBM had assumed their expression was so hard to replicate that the distinction didn't matter. They were wrong.</p>
+    <p>Phoenix didn't steal IBM's BIOS. They described what it did, then built something that did the same thing differently. The law was on their side because function can't be owned. Only expression can. IBM had assumed their expression was so hard to replicate that the distinction didn't matter. They were wrong.</p>
 
-    <p>SaaS companies made the same bet. Their expression — the specific way they implemented processes organizations already needed — was hard enough to replicate that it functioned as a moat. For twenty-five years, that was true. Replicating Concur required years of engineering work and tens of millions of dollars. Nobody did it casually.</p>
+    <p>SaaS companies made the same bet. Their expression (the specific way they implemented processes organizations already needed) was hard enough to replicate that it functioned as a moat. For twenty-five years, that was true. Replicating Concur required years of engineering work and tens of millions of dollars. Nobody did it casually.</p>
 
     <p>That's over.</p>
 
-    <p>What's still valuable is what can't be described from the outside — the data, the network, the institutional intelligence that only comes from operating at scale over years. The companies that know this and act on it will be fine. The ones still pointing to their UI as their competitive advantage are going to find out what IBM found out in 1983.</p>
+    <p>What's still valuable is what can't be described from the outside. The data. The network effects. The institutional intelligence that only accumulates over years of real transactions. The companies that know this and act on it will be fine. The ones still pointing to their UI as their competitive advantage are going to find out what IBM found out in 1983.</p>
 
     <p>Someone is going to describe exactly what their product does.</p>
 
